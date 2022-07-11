@@ -1,0 +1,24 @@
+@api = http://localhost:4000
+post {{api}}/money
+Content-Type: application/json
+
+
+{ 
+      "name": "jorge593"
+      }
+
+###
+
+post {{api}}/edit
+Content-Type: application/json
+
+
+{ 
+      "edit": { 
+            "nameEdit": "cooperativa", 
+            "valueEdit": 5, 
+            "typeCost": "fixed",
+            "name": "jorge593"
+      } 
+
+}
