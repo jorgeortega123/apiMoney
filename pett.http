@@ -1,4 +1,4 @@
-@api = http://localhost:4000
+@api = https://mymone.azurewebsites.net
 post {{api}}/money
 Content-Type: application/json
 
