@@ -194,6 +194,8 @@ app.post("/udapteDebts", (req, res) => {
 
         var before = credentials.debts[arrNumber].paid;
         credentials.debts[arrNumber].paid = before + value;
+        var a =  credentials.restOfLastWeek[1].value
+        credentials.restOfLastWeek[1].value = a - value
         // AÑADIDO NUEVO
         fs.writeFileSync(f, JSON.stringify(credentials));
          res.json({
