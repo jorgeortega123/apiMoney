@@ -1,11 +1,22 @@
-@api = https://mymone.azurewebsites.net
+@api = http://127.0.0.1:4000
 post {{api}}/money
 Content-Type: application/json
 
 
-{ 
-      "name": "jorge593"
+###
+
+
+post {{api}}/event
+Content-Type: application/json
+
+
+
+     { 
+      "data": "812"
       }
+
+
+
 
 ###
 
