@@ -6,7 +6,7 @@ Content-Type: application/json
 ###
 
 
-post {{api}}/event
+post https://mymone.azurewebsites.net/event
 Content-Type: application/json
 
 
