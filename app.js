@@ -32,6 +32,42 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 //
+app.post("/login", (req, res) => {
+   var user = req.body.user
+   var pass = req.body.pass
+   var a = folder + user + "/data.json";
+   if (!fs.existsSync(a)) {
+    res.json({
+      title: "Error", 
+      data: "No se econtro información del usuario",
+      message: "error", 
+      extra: 100
+    });
+  }
+  var credentials = JSON.parse(fs.readFileSync(a).toString());
+  if(pass===credentials.secondName) {
+    res.json({
+      title: "success", 
+      data: "User valido",
+      message: "error", 
+      extra: 205,
+      token: user
+    });
+    return true;
+  } else {
+    res.json({
+      title: "Error", 
+      data: "Es posible que la contraseña este mal",
+      message: "error", 
+      extra: 107,
+      token: user
+    });
+    return true;
+  }
+
+})
+
+
 
 app.post("/edit", (req, res) => {
   console.log(req.body);
