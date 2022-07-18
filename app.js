@@ -14,6 +14,7 @@ var app = express();
 //
 //const token = '5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko';
 const folder = "./components/users/";
+
 const filename = "./data.json";
 const rawdata = fs.readFileSync(filename);
 const student = JSON.parse(rawdata);
