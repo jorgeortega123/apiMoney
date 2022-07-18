@@ -148,6 +148,10 @@ app.post("/edit", (req, res) => {
   var beforeValue = l[arrNumberFound].value;
   credentials.cost[0][typeCost][arrNumberFound].value = beforeValue + valueEdit;
   var s = credentials.cost[0][typeCost][arrNumberFound].max;
+  // new
+  var beforeCredits =  credentials.restOfLastWeek[1].value 
+  credentials.restOfLastWeek[1].value  = beforeCredits - valueEdit
+  //
   credentials.dinnerMove.push({
     name: nameEdit,
     valor: valueEdit,
@@ -157,6 +161,7 @@ app.post("/edit", (req, res) => {
   });
   fs.writeFileSync(a, JSON.stringify(credentials));
   if (s < valueEdit) {
+    
     var telegramId = credentials.chatIdTelegram;
     var sms =
       "¡El movimiento de dinero tiene un valor por encima del permitido!";
@@ -167,7 +172,7 @@ app.post("/edit", (req, res) => {
       s +
       " y se acredito " +
       valueEdit +
-      " a su rubro.";
+      " a su rubro. \xF0\x9F\x98\xAD" + "\xF0\x9F\x98\xAD";
     bot.sendMessage(telegramId, sms);
     bot.sendMessage(telegramId, jsonToSend);
     res.json({

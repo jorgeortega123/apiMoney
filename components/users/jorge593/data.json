@@ -88,7 +88,7 @@
     }
   ],
   "debts": [
-    { "name": "luis", "relationship": "hermano", "mount": 70, "paid": 0 },
+    { "name": "luis", "relationship": "hermano", "mount": 79, "paid": 0 },
     { "name": "johanna", "relationship": "mama", "mount": 41, "paid": 0 }
   ],
   "dinnerMove": [
@@ -98,7 +98,7 @@
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 75 }
+    { "title": "patrimonio", "value": 80 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },

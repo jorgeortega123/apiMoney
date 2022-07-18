@@ -1,10 +1,10 @@
 @api = http://127.0.0.1:4000
-post {{api}}/download
+post https://mymone.azurewebsites.net/download
 Content-Type: application/json
 
 
 { 
-      "user": "Jorge593"
+      "user": "jorge593"
 }
 
 
