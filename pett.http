@@ -1,6 +1,11 @@
 @api = http://127.0.0.1:4000
-post {{api}}/money
+post {{api}}/download
 Content-Type: application/json
+
+
+{ 
+      "user": "Jorge593"
+}
 
 
 ###
