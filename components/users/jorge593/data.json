@@ -4,6 +4,7 @@
   "secondName": "Ortega",
   "actualDay": "Mon",
   "perWeek": 40,
+  "chatIdTelegram": 1213716507,
   "perMonth": 160,
   "cost": [
     {
@@ -102,5 +103,9 @@
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
     { "title": "ahorro", "value": 0, "cost": 0, "max": 0 }
-  ]
+  ],
+  "history" : {
+    "today": [{"day": "mar", "id": 0, "value": 0, "after":0, "before":0}], 
+    "rest": [{"day": "mar", "id": 0, "value": 0, "after":0, "before":0}]
+  }
 }
