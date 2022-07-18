@@ -6,7 +6,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var fs = require("fs");
-//var TelegramBot = require("node-telegram-bot-api");
+var TelegramBot = require("node-telegram-bot-api");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -15,12 +15,11 @@ var app = express();
 //const token = '5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko';
 const folder = "./components/users/";
 
-//const filename = "./data.json";
-//const rawdata = fs.readFileSync(filename);
-//const student = JSON.parse(rawdata);
-//const token = student.token;
-//const bot = new TelegramBot("5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko", { polling: true });
-const bot = "hola"
+const filename = "./data.json";
+const rawdata = fs.readFileSync(filename);
+const student = JSON.parse(rawdata);
+const token = student.token;
+const bot = new TelegramBot(token, { polling: true });
 //
 app.use(cors());
 app.use(morgan("dev"));
