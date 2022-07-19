@@ -123,6 +123,7 @@ app.post("/login", (req, res) => {
 
 app.post("/edit", (req, res) => {
   console.log(req.body);
+  var bodyReq = req.body
   var toEdit = req.body.edit;
   var nameEdit = toEdit.nameEdit;
   var valueEdit = toEdit.valueEdit;
@@ -163,14 +164,15 @@ app.post("/edit", (req, res) => {
   credentials.restOfLastWeek[1].value = beforeCredits - valueEdit;
   // new
   var d = new Date();
-  var dayName = d.toString().split(" ")[0];
+  //var dayName = d.toString().split(" ")[0];
   var monthDay =  d.toString().split(" ")[1];
-  var numberDay = d.toString().split(" ")[2];
+  //var numberDay = d.toString().split(" ")[2];
   var yearDay = d.toString().split(" ")[3];
   var id = randomId(5, "Ao0")
+  //numberDay + yearDay + monthDay;
   var formJsonDa = {
-    day: dayName,
-    id: numberDay + yearDay + monthDay ,
+    day: bodyReq.edit.nameDay,
+    id: bodyReq.edit.numberDay + yearDay + bodyReq.edit.monthDay ,
     extra: id, 
     value: valueEdit,
     costName: l[arrNumberFound].title,
