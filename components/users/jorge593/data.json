@@ -26,7 +26,7 @@
           "monthly": 11
         },
         {
-          "title": "recargar",
+          "title": "recarga",
           "color": "#a05195",
           "value": 0,
           "cost": 1.75,
@@ -36,7 +36,7 @@
         {
           "title": "comida",
           "color": "#FFEC00",
-          "value": 0,
+          "value": 7.5,
           "cost": 5,
           "max": 8
         },
@@ -50,7 +50,7 @@
         {
           "title": "pasaje",
           "color": "#007ED6",
-          "value": 0,
+          "value": 0.35000000000000003,
           "cost": 2.4,
           "max": 3
         },
@@ -88,24 +88,57 @@
     }
   ],
   "debts": [
-    { "name": "luis", "relationship": "hermano", "mount": 79, "paid": 0 },
-    { "name": "johanna", "relationship": "mama", "mount": 41, "paid": 0 }
+    { "name": "luis", "relationship": "hermano", "mount": 79, "paid": 10.45 },
+    { "name": "johanna", "relationship": "mama", "mount": 41, "paid": 0.35 }
   ],
   "dinnerMove": [
-
-    
+    {
+      "name": "pasaje",
+      "valor": 0.17,
+      "type": "fixed",
+      "before": 0,
+      "after": 0.17
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.1,
+      "type": "fixed",
+      "before": 0.17,
+      "after": 0.27
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.08,
+      "type": "fixed",
+      "before": 0.27,
+      "after": 0.35000000000000003
+    },
+    {
+      "name": "comida",
+      "valor": 4.5,
+      "type": "fixed",
+      "before": 0,
+      "after": 4.5
+    },
+    {
+      "name": "comida",
+      "valor": 3,
+      "type": "fixed",
+      "before": 4.5,
+      "after": 7.5
+    }
   ],
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 80 }
+    { "title": "patrimonio", "value": 62.70 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
     { "title": "ahorro", "value": 0, "cost": 0, "max": 0 }
   ],
-  "history" : {
-    "today": [{"day": "mar", "id": 0, "value": 0, "after":0, "before":0}], 
-    "rest": [{"day": "mar", "id": 0, "value": 0, "after":0, "before":0}]
+  "history": {
+    "today": [],
+    "rest": [{ "day": "mar", "id": 0, "value": 0, "after": 0, "before": 0 }]
   }
 }

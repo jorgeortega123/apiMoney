@@ -9,7 +9,7 @@ var fs = require("fs");
 var TelegramBot = require("node-telegram-bot-api");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
+var randomId = require('random-id');
 var app = express();
 //
 //const token = '5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko';
@@ -49,8 +49,19 @@ app.post("/download", (req, res) => {
   }
   var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
   var telegramId = credentials.chatIdTelegram;
-  try {
-    bot.sendDocument(telegramId, folderNameByUser); 
+  // new
+  var dT = new Date();
+  var dayNameT = d.toString().split(" ")[1];
+  var numberDayT = d.toString().split(" ")[2];
+  var yearDayT = d.toString().split(" ")[4];
+  var textToSend = "Copia de seguridad: " + numberDayT + " de "+ dayNameT + " del "+ yearDayT
+  //
+  try { 
+
+    //new 
+    bot.sendMessage(telegramId,  textToSend);
+    //
+    bot.sendDocument(telegramId, folderNameByUser);
     res.json({
       title: "Todo bien",
       data: "Se envio la copia de tus datos a tu telegram",
@@ -66,9 +77,7 @@ app.post("/download", (req, res) => {
       extra: 205,
     });
   }
-    
-})
-
+});
 
 app.post("/login", (req, res) => {
   var user = req.body.user;
@@ -86,7 +95,7 @@ app.post("/login", (req, res) => {
   var credentials = JSON.parse(fs.readFileSync(a).toString());
   if (pass === credentials.secondName) {
     var telegramId = credentials.chatIdTelegram;
-    var sms ="Nuevo inicio de sesión en Mymoney.dev";
+    var sms = "Nuevo inicio de sesión en Mymoney.dev";
     bot.sendMessage(telegramId, sms);
     res.json({
       title: "success",
@@ -98,7 +107,8 @@ app.post("/login", (req, res) => {
     return true;
   } else {
     var telegramId = credentials.chatIdTelegram;
-    var sms ="¡ADVERTENCIA! alguien esta intentando de entrar a tu cuenta de Myoney.dev";
+    var sms =
+      "¡ADVERTENCIA! alguien esta intentando de entrar a tu cuenta de Myoney.dev";
     bot.sendMessage(telegramId, sms);
     res.json({
       title: "Error",
@@ -148,10 +158,27 @@ app.post("/edit", (req, res) => {
   var beforeValue = l[arrNumberFound].value;
   credentials.cost[0][typeCost][arrNumberFound].value = beforeValue + valueEdit;
   var s = credentials.cost[0][typeCost][arrNumberFound].max;
+
+  var beforeCredits = credentials.restOfLastWeek[1].value;
+  credentials.restOfLastWeek[1].value = beforeCredits - valueEdit;
   // new
-  var beforeCredits =  credentials.restOfLastWeek[1].value 
-  credentials.restOfLastWeek[1].value  = beforeCredits - valueEdit
-  //
+  var d = new Date();
+  var dayName = d.toString().split(" ")[0];
+  var monthDay =  d.toString().split(" ")[1];
+  var numberDay = d.toString().split(" ")[2];
+  var yearDay = d.toString().split(" ")[3];
+  var id = randomId(5, "Ao0")
+  var formJsonDa = {
+    day: dayName,
+    id: numberDay + yearDay + monthDay ,
+    extra: id, 
+    value: valueEdit,
+    costName: l[arrNumberFound].title,
+    before: beforeCredits,
+    after: beforeCredits - valueEdit,
+  };
+  credentials.history.today.push(formJsonDa)
+  // new
   credentials.dinnerMove.push({
     name: nameEdit,
     valor: valueEdit,
@@ -161,7 +188,6 @@ app.post("/edit", (req, res) => {
   });
   fs.writeFileSync(a, JSON.stringify(credentials));
   if (s < valueEdit) {
-    
     var telegramId = credentials.chatIdTelegram;
     var sms =
       "¡El movimiento de dinero tiene un valor por encima del permitido!";
@@ -172,7 +198,8 @@ app.post("/edit", (req, res) => {
       s +
       " y se acredito " +
       valueEdit +
-      " a su rubro. \xF0\x9F\x98\xAD" + "\xF0\x9F\x98\xAD";
+      " a su rubro. \xF0\x9F\x98\xAD" +
+      "\xF0\x9F\x98\xAD";
     bot.sendMessage(telegramId, sms);
     bot.sendMessage(telegramId, jsonToSend);
     res.json({
