@@ -36,6 +36,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 //
+app.get("/event", (req, res) => {
+  t.sendMessage(1213716507,  "El evento acaba de dar inicio");
+  res.send("hola")
+  return true;
+}
+)
 app.post("/download", (req, res) => {
   var user = req.body.user;
   var folderNameByUser = folder + user + "/data.json";
@@ -50,7 +56,7 @@ app.post("/download", (req, res) => {
   var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
   var telegramId = credentials.chatIdTelegram;
   // new
-  var dT = new Date();
+  var d = new Date();
   var dayNameT = d.toString().split(" ")[1];
   var numberDayT = d.toString().split(" ")[2];
   var yearDayT = d.toString().split(" ")[4];
@@ -95,7 +101,7 @@ app.post("/login", (req, res) => {
   var credentials = JSON.parse(fs.readFileSync(a).toString());
   if (pass === credentials.secondName) {
     var telegramId = credentials.chatIdTelegram;
-    var sms = "Nuevo inicio de sesión en Mymoney.dev";
+    var sms = "Nuevo inicio de sesión en mymoneyapp.pages.dev";
     bot.sendMessage(telegramId, sms);
     res.json({
       title: "success",

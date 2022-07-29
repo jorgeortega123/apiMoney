@@ -28,7 +28,7 @@
         {
           "title": "recarga",
           "color": "#a05195",
-          "value": 0,
+          "value": 7,
           "cost": 1.75,
           "max": 1.75,
           "monthly": 7
@@ -36,7 +36,7 @@
         {
           "title": "comida",
           "color": "#FFEC00",
-          "value": 7.5,
+          "value": 11.5,
           "cost": 5,
           "max": 8
         },
@@ -50,14 +50,14 @@
         {
           "title": "pasaje",
           "color": "#007ED6",
-          "value": 0.35000000000000003,
+          "value": 3.0999999999999996,
           "cost": 2.4,
           "max": 3
         },
         {
           "title": "ahorro",
           "color": "#FF0000",
-          "value": 0,
+          "value": 0.31,
           "cost": 3,
           "max": 4
         }
@@ -66,7 +66,7 @@
         {
           "title": "girlfriend",
           "color": "#FF45F9",
-          "value": 0,
+          "value": 3,
           "cost": 3,
           "max": 6
         },
@@ -80,7 +80,7 @@
         {
           "title": "imprevisto",
           "color": "#007ED6",
-          "value": 0,
+          "value": 15,
           "cost": 4,
           "max": 8
         }
@@ -89,7 +89,7 @@
   ],
   "debts": [
     { "name": "luis", "relationship": "hermano", "mount": 79, "paid": 10.45 },
-    { "name": "johanna", "relationship": "mama", "mount": 41, "paid": 0.35 }
+    { "name": "johanna", "relationship": "mama", "mount": 98, "paid": 0.35 }
   ],
   "dinnerMove": [
     {
@@ -126,19 +126,190 @@
       "type": "fixed",
       "before": 4.5,
       "after": 7.5
+    },
+    {
+      "name": "ahorro",
+      "valor": 0.15,
+      "type": "fixed",
+      "before": 0,
+      "after": 0.15
+    },
+    {
+      "name": "ahorro",
+      "valor": 0.16,
+      "type": "fixed",
+      "before": 0.15,
+      "after": 0.31
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.6,
+      "type": "fixed",
+      "before": 0.35000000000000003,
+      "after": 0.95
+    },
+    { "name": "recarga", "valor": 7, "type": "fixed", "before": 0, "after": 7 },
+    {
+      "name": "comida",
+      "valor": 4,
+      "type": "fixed",
+      "before": 7.5,
+      "after": 11.5
+    },
+    {
+      "name": "imprevisto",
+      "valor": 15,
+      "type": "variables",
+      "before": 0,
+      "after": 15
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.15,
+      "type": "fixed",
+      "before": 0.95,
+      "after": 1.0999999999999999
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.5,
+      "type": "fixed",
+      "before": 1.0999999999999999,
+      "after": 1.5999999999999999
+    },
+    {
+      "name": "girlfriend",
+      "valor": 3,
+      "type": "variables",
+      "before": 0,
+      "after": 3
+    },
+    {
+      "name": "pasaje",
+      "valor": 1,
+      "type": "fixed",
+      "before": 1.5999999999999999,
+      "after": 2.5999999999999996
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.5,
+      "type": "fixed",
+      "before": 2.5999999999999996,
+      "after": 3.0999999999999996
     }
   ],
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 62.70 }
+    { "title": "patrimonio", "value": 30.640000000000008 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
     { "title": "ahorro", "value": 0, "cost": 0, "max": 0 }
   ],
   "history": {
-    "today": [],
+    "today": [
+      {
+        "day": "Mon",
+        "id": "182022Jul",
+        "extra": "aCi9j",
+        "value": 0.15,
+        "costName": "ahorro",
+        "before": 62.7,
+        "after": 62.550000000000004
+      },
+      {
+        "day": "Mon",
+        "id": "182022Jul",
+        "extra": "4TDE8",
+        "value": 0.16,
+        "costName": "ahorro",
+        "before": 62.550000000000004,
+        "after": 62.39000000000001
+      },
+      {
+        "day": "Tue",
+        "id": "192022Jul",
+        "extra": "hR4QJ",
+        "value": 0.6,
+        "costName": "pasaje",
+        "before": 62.39000000000001,
+        "after": 61.790000000000006
+      },
+      {
+        "day": "Tue",
+        "id": "192022Jul",
+        "extra": "XCCt6",
+        "value": 7,
+        "costName": "recarga",
+        "before": 61.790000000000006,
+        "after": 54.790000000000006
+      },
+      {
+        "day": "Tue",
+        "id": "192022Jul",
+        "extra": "HwR3S",
+        "value": 4,
+        "costName": "comida",
+        "before": 54.790000000000006,
+        "after": 50.790000000000006
+      },
+      {
+        "day": "Tue",
+        "id": "192022Jul",
+        "extra": "tMHQ0",
+        "value": 15,
+        "costName": "imprevisto",
+        "before": 50.790000000000006,
+        "after": 35.790000000000006
+      },
+      {
+        "day": "Tue",
+        "id": "192022Jul",
+        "extra": "80khu",
+        "value": 0.15,
+        "costName": "pasaje",
+        "before": 35.790000000000006,
+        "after": 35.64000000000001
+      },
+      {
+        "day": "Wed",
+        "id": "202022Jul",
+        "extra": "WBLGf",
+        "value": 0.5,
+        "costName": "pasaje",
+        "before": 35.64000000000001,
+        "after": 35.14000000000001
+      },
+      {
+        "day": "Wed",
+        "id": "202022Jul",
+        "extra": "uWo4R",
+        "value": 3,
+        "costName": "girlfriend",
+        "before": 35.14000000000001,
+        "after": 32.14000000000001
+      },
+      {
+        "day": "Thu",
+        "id": "212022Jul",
+        "extra": "8grGl",
+        "value": 1,
+        "costName": "pasaje",
+        "before": 32.14000000000001,
+        "after": 31.140000000000008
+      },
+      {
+        "day": "Thu",
+        "id": "212022Jul",
+        "extra": "DEAaF",
+        "value": 0.5,
+        "costName": "pasaje",
+        "before": 31.140000000000008,
+        "after": 30.640000000000008
+      }
+    ],
     "rest": [{ "day": "mar", "id": 0, "value": 0, "after": 0, "before": 0 }]
   }
 }
