@@ -361,7 +361,7 @@ app.post("/udapteDebts", (req, res) => {
      data.action,*/
       var historyToDebst = {
         name: to,
-        incoming: val,
+        incoming: value,
         beforeDebst: before,
         afterDebst: before + value,
         beforeWorth: a,
@@ -396,7 +396,7 @@ app.post("/udapteDebts", (req, res) => {
     credentials.debts[arrNumber].mount = beforee + value;
     var historyToDebstDe = {
       name: to,
-      incoming: val,
+      incoming: value,
       beforeDebst: before,
       afterDebst: beforee + value,
       beforeWorth: credentials.restOfLastWeek[1].value,

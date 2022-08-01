@@ -88,12 +88,25 @@
     }
   ],
   "debts": [
-    { "name": "luis", "relationship": "hermano", "mount": 93.5, "paid": 10.45 },
+    {
+      "name": "luis",
+      "relationship": "hermano",
+      "mount": 93.51,
+      "paid": 10.45
+    },
     { "name": "johanna", "relationship": "mama", "mount": 113, "paid": 20.35 }
   ],
-  "historyDebst": { 
-
-  },
+  "historyDebst": [
+    {
+      "name": "luis",
+      "incoming": 0.01,
+      "afterDebst": 93.51,
+      "beforeWorth": 10.540000000000006,
+      "afterWorth": 10.540000000000006,
+      "type": "de",
+      "text": ""
+    }
+  ],
   "dinnerMove": [
     {
       "name": "pasaje",

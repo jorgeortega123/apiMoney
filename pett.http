@@ -11,13 +11,18 @@ Content-Type: application/json
 ###
 
 
-post https://mymone.azurewebsites.net/event
+//post https://mymone.azurewebsites.net/udapteDebts
+post {{api}}/udapteDebts
 Content-Type: application/json
 
 
 
      { 
-      "data": "812"
+      "name": "jorge593",
+        "val": 0.01,
+        "from": "patrimonio",
+        "to": "luis",
+        "action": "de"
       }
 
 
