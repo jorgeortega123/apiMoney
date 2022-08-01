@@ -9,7 +9,7 @@ var fs = require("fs");
 var TelegramBot = require("node-telegram-bot-api");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var randomId = require('random-id');
+var randomId = require("random-id");
 var app = express();
 //
 //const token = '5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko';
@@ -38,12 +38,11 @@ app.use("/", indexRouter);
 //
 
 app.get("/eventt", (req, res) => {
-  console.log("ola")
-  bot.sendMessage(1213716507,  "El evento acaba de dar inicio");
-  res.send("hola")
+  console.log("ola");
+  bot.sendMessage(1213716507, "El evento acaba de dar inicio");
+  res.send("hola");
   return true;
-})
-
+});
 
 app.post("/download", (req, res) => {
   var user = req.body.user;
@@ -63,12 +62,17 @@ app.post("/download", (req, res) => {
   var dayNameT = d.toString().split(" ")[1];
   var numberDayT = d.toString().split(" ")[2];
   var yearDayT = d.toString().split(" ")[4];
-  var textToSend = "Copia de seguridad: " + numberDayT + " de "+ dayNameT + " del "+ yearDayT
+  var textToSend =
+    "Copia de seguridad: " +
+    numberDayT +
+    " de " +
+    dayNameT +
+    " del " +
+    yearDayT;
   //
-  try { 
-
-    //new 
-    bot.sendMessage(telegramId,  textToSend);
+  try {
+    //new
+    bot.sendMessage(telegramId, textToSend);
     //
     bot.sendDocument(telegramId, folderNameByUser);
     res.json({
@@ -132,7 +136,7 @@ app.post("/login", (req, res) => {
 
 app.post("/edit", (req, res) => {
   console.log(req.body);
-  var bodyReq = req.body
+  var bodyReq = req.body;
   var toEdit = req.body.edit;
   var nameEdit = toEdit.nameEdit;
   var valueEdit = toEdit.valueEdit;
@@ -174,21 +178,21 @@ app.post("/edit", (req, res) => {
   // new
   var d = new Date();
   //var dayName = d.toString().split(" ")[0];
-  var monthDay =  d.toString().split(" ")[1];
+  var monthDay = d.toString().split(" ")[1];
   //var numberDay = d.toString().split(" ")[2];
   var yearDay = d.toString().split(" ")[3];
-  var id = randomId(5, "Ao0")
+  var id = randomId(5, "Ao0");
   //numberDay + yearDay + monthDay;
   var formJsonDa = {
     day: bodyReq.edit.nameDay,
-    id: bodyReq.edit.numberDay + yearDay + bodyReq.edit.monthDay ,
-    extra: id, 
+    id: bodyReq.edit.numberDay + yearDay + bodyReq.edit.monthDay,
+    extra: id,
     value: valueEdit,
     costName: l[arrNumberFound].title,
     before: beforeCredits,
     after: beforeCredits - valueEdit,
   };
-  credentials.history.today.push(formJsonDa)
+  credentials.history.today.push(formJsonDa);
   // new
   credentials.dinnerMove.push({
     name: nameEdit,
@@ -246,11 +250,10 @@ app.post("/udapteDebts", (req, res) => {
     res.json({ data: "No se econtro información del usuario", extra: 100 });
     return true;
   }
-  console.log(2);
+
   var credentials = JSON.parse(fs.readFileSync(f).toString());
-  console.log(3);
+
   var accountsToacreditCash = ["patrimonio", "savings"];
-  console.log(4);
   var [rubroPatromino, rubroSavings] = [
     credentials.restOfLastWeek[1].value,
     credentials.savings[1].value,
@@ -349,7 +352,25 @@ app.post("/udapteDebts", (req, res) => {
       credentials.debts[arrNumber].paid = before + value;
       var a = credentials.restOfLastWeek[1].value;
       credentials.restOfLastWeek[1].value = a - value;
-      // AÑADIDO NUEVO
+      // AÑADIDO NUEVO ADD HISTORY
+      /*
+      data.name,
+     data.val,
+     data.from,
+     data.to,
+     data.action,*/
+      var historyToDebst = {
+        name: to,
+        incoming: val,
+        beforeDebst: before,
+        afterDebst: before + value,
+        beforeWorth: a,
+        afterWorth: a - value,
+        type: "in",
+        text: "",
+      };
+      credentials.historyDebst.push(historyToDebst);
+      // AÑADIDO NUEVO ADD HISTORY
       fs.writeFileSync(f, JSON.stringify(credentials));
       res.json({
         title: "Movimiento exitoso",
@@ -373,8 +394,21 @@ app.post("/udapteDebts", (req, res) => {
   } else if (action === "de") {
     var beforee = deb[arrNumber].mount;
     credentials.debts[arrNumber].mount = beforee + value;
+    var historyToDebstDe = {
+      name: to,
+      incoming: val,
+      beforeDebst: before,
+      afterDebst: beforee + value,
+      beforeWorth: credentials.restOfLastWeek[1].value,
+      afterWorth: credentials.restOfLastWeek[1].value,
+      type: "de",
+      text: "",
+    };
+    credentials.historyDebst.push(historyToDebstDe);
     fs.writeFileSync(f, JSON.stringify(credentials));
+
     res.json({
+      title: "Movimiento exitoso",
       data:
         "Se incremento el valor de " +
         deb[arrNumber].name +
@@ -382,6 +416,7 @@ app.post("/udapteDebts", (req, res) => {
         beforee +
         value,
       extra: 203,
+      message: "success",
     });
     return true;
   }

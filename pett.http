@@ -31,6 +31,21 @@ get https://mymone.azurewebsites.net/eventt
 
 get {{api}}/eventt
 
+###
+
+post https://textbelt.com/text 
+Content-Type: application/json
+
+
+{ 
+     
+       "phone": "+593959434867",
+    "message": "ola",
+    "key": "c40aecb8bc1497d84c1c1c28071cd860adeb22c2mo8U8P7eDS33otmOGpQg1FR0e"
+     
+     
+    
+}
 
 ##
 post {{api}}/edit

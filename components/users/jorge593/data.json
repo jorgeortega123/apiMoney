@@ -88,9 +88,12 @@
     }
   ],
   "debts": [
-    { "name": "luis", "relationship": "hermano", "mount": 79, "paid": 10.45 },
-    { "name": "johanna", "relationship": "mama", "mount": 98, "paid": 0.35 }
+    { "name": "luis", "relationship": "hermano", "mount": 93.5, "paid": 10.45 },
+    { "name": "johanna", "relationship": "mama", "mount": 113, "paid": 20.35 }
   ],
+  "historyDebst": { 
+
+  },
   "dinnerMove": [
     {
       "name": "pasaje",
@@ -209,7 +212,7 @@
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 30.540000000000006 }
+    { "title": "patrimonio", "value": 10.540000000000006 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
