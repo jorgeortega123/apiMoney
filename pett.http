@@ -25,6 +25,14 @@ Content-Type: application/json
 
 ###
 
+get https://mymone.azurewebsites.net/eventt
+
+###
+
+get {{api}}/eventt
+
+
+##
 post {{api}}/edit
 Content-Type: application/json
 

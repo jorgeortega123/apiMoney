@@ -20,7 +20,7 @@ router.post("/money", (req, res) => {
   }
 });
 
-router.post("/event", (req, res) => {
+router.post("/eventf", (req, res) => {
   //var r = req.body.data;
   var r = req.body.data;
   var r = "812"

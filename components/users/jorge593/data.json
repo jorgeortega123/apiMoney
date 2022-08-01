@@ -50,7 +50,7 @@
         {
           "title": "pasaje",
           "color": "#007ED6",
-          "value": 3.0999999999999996,
+          "value": 3.1999999999999997,
           "cost": 2.4,
           "max": 3
         },
@@ -197,12 +197,19 @@
       "type": "fixed",
       "before": 2.5999999999999996,
       "after": 3.0999999999999996
+    },
+    {
+      "name": "pasaje",
+      "valor": 0.1,
+      "type": "fixed",
+      "before": 3.0999999999999996,
+      "after": 3.1999999999999997
     }
   ],
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 30.640000000000008 }
+    { "title": "patrimonio", "value": 30.540000000000006 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
@@ -308,6 +315,15 @@
         "costName": "pasaje",
         "before": 31.140000000000008,
         "after": 30.640000000000008
+      },
+      {
+        "day": "Fri",
+        "id": "292022Jul",
+        "extra": "wxwBj",
+        "value": 0.1,
+        "costName": "pasaje",
+        "before": 30.640000000000008,
+        "after": 30.540000000000006
       }
     ],
     "rest": [{ "day": "mar", "id": 0, "value": 0, "after": 0, "before": 0 }]

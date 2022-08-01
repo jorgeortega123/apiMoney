@@ -36,12 +36,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 //
-app.get("/event", (req, res) => {
-  t.sendMessage(1213716507,  "El evento acaba de dar inicio");
+
+app.get("/eventt", (req, res) => {
+  console.log("ola")
+  bot.sendMessage(1213716507,  "El evento acaba de dar inicio");
   res.send("hola")
   return true;
-}
-)
+})
+
+
 app.post("/download", (req, res) => {
   var user = req.body.user;
   var folderNameByUser = folder + user + "/data.json";
