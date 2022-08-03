@@ -3,6 +3,7 @@
   "name": "Jorge",
   "secondName": "Ortega",
   "actualDay": "Mon",
+  "isValueSunday": false,
   "perWeek": 40,
   "chatIdTelegram": 1213716507,
   "perMonth": 160,
@@ -10,7 +11,7 @@
     {
       "fixed": [
         {
-          "title": "ortodoncia",
+          "title": "medico",
           "color": "#0070ff",
           "value": 0,
           "cost": 5,
@@ -48,7 +49,7 @@
           "max": 4
         },
         {
-          "title": "pasaje",
+          "title": "transporte",
           "color": "#007ED6",
           "value": 3.1999999999999997,
           "cost": 2.4,
@@ -57,14 +58,14 @@
         {
           "title": "ahorro",
           "color": "#FF0000",
-          "value": 0.31,
+          "value": 0.32,
           "cost": 3,
           "max": 4
         }
       ],
       "variables": [
         {
-          "title": "girlfriend",
+          "title": "social",
           "color": "#FF45F9",
           "value": 3,
           "cost": 3,
@@ -91,21 +92,13 @@
     {
       "name": "luis",
       "relationship": "hermano",
-      "mount": 93.51,
-      "paid": 10.45
+      "mount": 93.53000000000002,
+      "paid": 10.459999999999999
     },
     { "name": "johanna", "relationship": "mama", "mount": 113, "paid": 20.35 }
   ],
   "historyDebst": [
-    {
-      "name": "luis",
-      "incoming": 0.01,
-      "afterDebst": 93.51,
-      "beforeWorth": 10.540000000000006,
-      "afterWorth": 10.540000000000006,
-      "type": "de",
-      "text": ""
-    }
+   
   ],
   "dinnerMove": [
     {
@@ -220,12 +213,19 @@
       "type": "fixed",
       "before": 3.0999999999999996,
       "after": 3.1999999999999997
+    },
+    {
+      "name": "ahorro",
+      "valor": 0.01,
+      "type": "fixed",
+      "before": 0.31,
+      "after": 0.32
     }
   ],
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 10.540000000000006 }
+    { "title": "patrimonio", "value": 10.520000000000007 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
@@ -340,6 +340,15 @@
         "costName": "pasaje",
         "before": 30.640000000000008,
         "after": 30.540000000000006
+      },
+      {
+        "day": "Mon",
+        "id": "012022Aug",
+        "extra": "r9Sy5",
+        "value": 0.01,
+        "costName": "ahorro",
+        "before": 10.540000000000006,
+        "after": 10.530000000000006
       }
     ],
     "rest": [{ "day": "mar", "id": 0, "value": 0, "after": 0, "before": 0 }]

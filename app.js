@@ -36,6 +36,54 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 //
+app.post("/newContabilitie", (req, res) => {
+  var user = req.body.name;
+  var folderNameByUser = folder + user + "/data.json";
+  if (!fs.existsSync(folderNameByUser)) {
+    res.json({
+      title: "Error",
+      data: "No se econtro información del usuario",
+      message: "error",
+      extra: 100,
+    });
+  }
+  //
+  var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
+  if (credentials.isValueSunday===true) {res.json({
+    title: "Uncoreset",
+    data: "Ya se realizo el domingo",
+    message: "warning",
+    extra: 100,
+  });return true}
+  var fixedCost = credentials.cost[0].fixed;
+  var variablesCost = credentials.cost[0].variables;
+  //console.log(nameEdit);
+  //console.log(l);
+  for (var i = 0; i < fixedCost.length; i++) {
+    credentials.cost[0].fixed[i].value = 0
+  }
+  for (var a = 0; i < variablesCost.length; a++) {
+    credentials.cost[0].variables[a].value = 0
+  }
+  credentials.isValueSunday=true
+  fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+  res.json({
+    title: "Feliz inicio de semana!",
+    data: "Se modificaron los gastos y costos a 0",
+    message: "success",
+    extra: 100,
+  });
+
+  //
+
+
+
+
+
+})
+
+
+
 
 app.get("/eventt", (req, res) => {
   console.log("ola");
@@ -117,11 +165,11 @@ app.post("/login", (req, res) => {
       extra: 205,
       token: user,
     });
-    return true;
+    5
   } else {
     var telegramId = credentials.chatIdTelegram;
     var sms =
-      "¡ADVERTENCIA! alguien esta intentando de entrar a tu cuenta de Myoney.dev";
+      "¡ADVERTENCIA! alguien esta intentando de entrar a tu cuenta de mymoneyapp.pages.dev";
     bot.sendMessage(telegramId, sms);
     res.json({
       title: "Error",

@@ -10,7 +10,29 @@ Content-Type: application/json
 
 ###
 
+post {{api}}/newContabilitie
+Content-Type: application/json
 
+
+{ 
+      "name": "jorge593",
+      "date": { 
+            "day": "Sun"
+      }
+}
+
+
+###
+post https://app.tuenti.ec/ms-tuenti-gateway/tuenti/request
+Content-Type: application/json
+
+
+{ 
+      "number": <962716235,
+      "data": "6bb5ffb2777f3b031c9978a4bbe91561a4d5480697e448eb7be98f20e7cb7e37bed5cc4db41c240f8517b146c8ea7e4a5565a75d70227838dc6df93b6b95e296406634cccb125e5f527d196c4f49b1ab10608f4cef6c26bf42900be1eb9eb85a8f5b81da8ddbfff105dbd583e4d7cd25d342009c8f37a3516fd1b396de9881c48b910e12c15c559e1deee72f93d00b431c2fe2cee4afd5a917e081bcbef13bf4a010906b8462bdce400727ccd011ba817546aee3b39fe0cd15cb299e67fbf2ea59d6402b44994113847e95016d9b7d6a31c729a5bca8d3a631413597417e0148bf08551036b6be67091eb8e0f8c2b94c071d376c88709a800f9ef57c84c8c256face673b10b5d616c04a3fc8303dea5a718d8b39497f2127bb2c039baad067493f3dd27b4e477c29ac630406f3f3caac677884810b10d921ed7037447aa2936e71cce12629f51af9ce8eb60408ed723cd7871736dabd1a71c4c4424d8e71d947aed25cd9e944114a8146641822b088e99f0efa2675f06819328a7f5df568c2373f3dd27b4e477c29ac630406f3f3caacc8ed2b398d378fc4c9d5d15cec5a977c"
+}
+
+###
 //post https://mymone.azurewebsites.net/udapteDebts
 post {{api}}/udapteDebts
 Content-Type: application/json

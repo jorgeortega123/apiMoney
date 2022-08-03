@@ -10,20 +10,33 @@ const folder = "./components/users/";
 router.post("/money", (req, res) => {
   console.log(req.body);
   var studentt = req.body;
+  var isSunday = req.body.date.day;
   var a = folder + studentt.name + "/data.json";
   if (!fs.existsSync(a)) {
     res.json({ data: "No se econtro información del usuario" });
     return false;
   } else {
-    var obj = JSON.parse(fs.readFileSync(a).toString());
-    res.json(obj);
+    var credentials = JSON.parse(fs.readFileSync(a).toString());
+    if (isSunday != "Sun") {
+      if (credentials.isValueSunday === false) {
+        res.json(credentials);
+        return true;
+      } else {
+        credentials.isValueSunday = false;
+        fs.writeFileSync(a, JSON.stringify(credentials));
+        res.json(credentials);
+        return true;
+      }
+    } else {
+      res.json(credentials);
+    }
   }
 });
 
 router.post("/eventf", (req, res) => {
   //var r = req.body.data;
   var r = req.body.data;
-  var r = "812"
+  var r = "812";
   var a = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,ñ,o,p,q,r,s,t,u,v,w,x,y,z";
   var [b, d] = [a.split(","), r.split("")];
   var c = d[0] / d[2] - 1;
