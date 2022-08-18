@@ -29,7 +29,7 @@
         {
           "title": "recarga",
           "color": "#a05195",
-          "value": 7,
+          "value": 0,
           "cost": 1.75,
           "max": 1.75,
           "monthly": 7
@@ -37,28 +37,28 @@
         {
           "title": "comida",
           "color": "#FFEC00",
-          "value": 11.5,
+          "value": 6,
           "cost": 5,
           "max": 8
         },
         {
           "title": "snacks",
           "color": "#FF7300",
-          "value": 0,
+          "value": 0.01,
           "cost": 1.5,
           "max": 4
         },
         {
           "title": "transporte",
           "color": "#007ED6",
-          "value": 3.1999999999999997,
+          "value": 0,
           "cost": 2.4,
           "max": 3
         },
         {
           "title": "ahorro",
           "color": "#FF0000",
-          "value": 0.32,
+          "value": 0,
           "cost": 3,
           "max": 4
         }
@@ -67,7 +67,7 @@
         {
           "title": "social",
           "color": "#FF45F9",
-          "value": 3,
+          "value": 5.5,
           "cost": 3,
           "max": 6
         },
@@ -81,7 +81,7 @@
         {
           "title": "imprevisto",
           "color": "#007ED6",
-          "value": 15,
+          "value": 35.5,
           "cost": 4,
           "max": 8
         }
@@ -92,13 +92,111 @@
     {
       "name": "luis",
       "relationship": "hermano",
-      "mount": 93.53000000000002,
-      "paid": 10.459999999999999
+      "mount": 124.00000000000001,
+      "paid": 13.959999999999999
     },
-    { "name": "johanna", "relationship": "mama", "mount": 113, "paid": 20.35 }
+    {
+      "name": "johanna",
+      "relationship": "mama",
+      "mount": 119,
+      "paid": 23.950000000000003
+    }
   ],
   "historyDebst": [
-   
+    {
+      "name": "luis",
+      "incoming": 1,
+      "beforeDebst": 10.459999999999999,
+      "afterDebst": 11.459999999999999,
+      "beforeWorth": 80.17000000000002,
+      "afterWorth": 79.17000000000002,
+      "type": "in",
+      "text": ""
+    },
+    {
+      "name": "luis",
+      "incoming": 3.5,
+      "afterDebst": 97.03000000000002,
+      "beforeWorth": 79.17000000000002,
+      "afterWorth": 79.17000000000002,
+      "type": "de",
+      "text": ""
+    },
+    {
+      "name": "luis",
+      "incoming": 2.5,
+      "beforeDebst": 11.459999999999999,
+      "afterDebst": 13.959999999999999,
+      "beforeWorth": 77.17000000000002,
+      "afterWorth": 74.67000000000002,
+      "type": "in",
+      "text": ""
+    },
+    {
+      "name": "johanna",
+      "incoming": 2.5,
+      "beforeDebst": 20.35,
+      "afterDebst": 22.85,
+      "beforeWorth": 74.67000000000002,
+      "afterWorth": 72.17000000000002,
+      "type": "in",
+      "text": ""
+    },
+    {
+      "name": "johanna",
+      "incoming": 6,
+      "afterDebst": 119,
+      "beforeWorth": 72.17000000000002,
+      "afterWorth": 72.17000000000002,
+      "type": "de",
+      "text": ""
+    },
+    {
+      "name": "luis",
+      "incoming": 10,
+      "afterDebst": 107.03000000000002,
+      "beforeWorth": 70.72000000000003,
+      "afterWorth": 70.72000000000003,
+      "type": "de",
+      "text": ""
+    },
+    {
+      "name": "luis",
+      "incoming": 5,
+      "afterDebst": 112.03000000000002,
+      "beforeWorth": 50.72000000000003,
+      "afterWorth": 50.72000000000003,
+      "type": "de",
+      "text": ""
+    },
+    {
+      "name": "luis",
+      "incoming": 4.48,
+      "afterDebst": 116.51000000000002,
+      "beforeWorth": 90.72000000000003,
+      "afterWorth": 90.72000000000003,
+      "type": "de",
+      "text": ""
+    },
+    {
+      "name": "johanna",
+      "incoming": 1.1,
+      "beforeDebst": 22.85,
+      "afterDebst": 23.950000000000003,
+      "beforeWorth": 90.72000000000003,
+      "afterWorth": 89.62000000000003,
+      "type": "in",
+      "text": ""
+    },
+    {
+      "name": "luis",
+      "incoming": 7.49,
+      "afterDebst": 124.00000000000001,
+      "beforeWorth": 89.62000000000003,
+      "afterWorth": 89.62000000000003,
+      "type": "de",
+      "text": ""
+    }
   ],
   "dinnerMove": [
     {
@@ -220,12 +318,119 @@
       "type": "fixed",
       "before": 0.31,
       "after": 0.32
-    }
+    },
+    {
+      "name": "medico",
+      "valor": 0.01,
+      "type": "fixed",
+      "before": 0,
+      "after": 0.01
+    },
+    {
+      "name": "transporte",
+      "valor": 0.35,
+      "type": "fixed",
+      "before": 0,
+      "after": 0.35
+    },
+    {
+      "name": "transporte",
+      "valor": 0.5,
+      "type": "fixed",
+      "before": 0.35,
+      "after": 0.85
+    },
+    {
+      "name": "snacks",
+      "valor": 0.9,
+      "type": "fixed",
+      "before": 0,
+      "after": 0.9
+    },
+    {
+      "name": "transporte",
+      "valor": 0.1,
+      "type": "fixed",
+      "before": 0.85,
+      "after": 0.95
+    },
+    {
+      "name": "imprevisto",
+      "valor": 0.5,
+      "type": "variables",
+      "before": 15,
+      "after": 15.5
+    },
+    {
+      "name": "transporte",
+      "valor": 0.35,
+      "type": "fixed",
+      "before": 0.95,
+      "after": 1.2999999999999998
+    },
+    {
+      "name": "medico",
+      "valor": 15,
+      "type": "fixed",
+      "before": 0.01,
+      "after": 15.01
+    },
+    { "name": "comida", "valor": 4, "type": "fixed", "before": 0, "after": 4 },
+    {
+      "name": "transporte",
+      "valor": 0.35,
+      "type": "fixed",
+      "before": 1.2999999999999998,
+      "after": 1.65
+    },
+    {
+      "name": "snacks",
+      "valor": 0.6,
+      "type": "fixed",
+      "before": 0.9,
+      "after": 1.5
+    },
+    {
+      "name": "snacks",
+      "valor": 0.35,
+      "type": "fixed",
+      "before": 1.5,
+      "after": 1.85
+    },
+    {
+      "name": "social",
+      "valor": 2.5,
+      "type": "variables",
+      "before": 3,
+      "after": 5.5
+    },
+    {
+      "name": "medico",
+      "valor": 18.3,
+      "type": "fixed",
+      "before": 15.01,
+      "after": 33.31
+    },
+    {
+      "name": "imprevisto",
+      "valor": 20,
+      "type": "variables",
+      "before": 15.5,
+      "after": 35.5
+    },
+    {
+      "name": "snacks",
+      "valor": 0.01,
+      "type": "fixed",
+      "before": 0,
+      "after": 0.01
+    },
+    { "name": "comida", "valor": 6, "type": "fixed", "before": 0, "after": 6 }
   ],
   "totalBill": 0,
   "restOfLastWeek": [
     { "title": "patrimonio", "value": 0 },
-    { "title": "patrimonio", "value": 10.520000000000007 }
+    { "title": "patrimonio", "value": 83.61000000000003 }
   ],
   "savings": [
     { "title": "ahorros", "value": 0, "cost": 0, "max": 0 },
@@ -349,6 +554,159 @@
         "costName": "ahorro",
         "before": 10.540000000000006,
         "after": 10.530000000000006
+      },
+      {
+        "day": "Wed",
+        "id": "032022Aug",
+        "extra": "RHb9q",
+        "value": 0.01,
+        "costName": "medico",
+        "before": 10.520000000000007,
+        "after": 10.510000000000007
+      },
+      {
+        "day": "Wed",
+        "id": "032022Aug",
+        "extra": "2IHws",
+        "value": 0.35,
+        "costName": "transporte",
+        "before": 80.52000000000001,
+        "after": 80.17000000000002
+      },
+      {
+        "day": "Thu",
+        "id": "042022Aug",
+        "extra": "rLQTN",
+        "value": 0.5,
+        "costName": "transporte",
+        "before": 79.17000000000002,
+        "after": 78.67000000000002
+      },
+      {
+        "day": "Thu",
+        "id": "042022Aug",
+        "extra": "lSnQZ",
+        "value": 0.9,
+        "costName": "snacks",
+        "before": 78.67000000000002,
+        "after": 77.77000000000001
+      },
+      {
+        "day": "Thu",
+        "id": "042022Aug",
+        "extra": "ejoYx",
+        "value": 0.1,
+        "costName": "transporte",
+        "before": 77.77000000000001,
+        "after": 77.67000000000002
+      },
+      {
+        "day": "Thu",
+        "id": "042022Aug",
+        "extra": "m7Gu6",
+        "value": 0.5,
+        "costName": "imprevisto",
+        "before": 77.67000000000002,
+        "after": 77.17000000000002
+      },
+      {
+        "day": "Fri",
+        "id": "052022Aug",
+        "extra": "A09fZ",
+        "value": 0.35,
+        "costName": "transporte",
+        "before": 72.17000000000002,
+        "after": 71.82000000000002
+      },
+      {
+        "day": "Fri",
+        "id": "052022Aug",
+        "extra": "tDpBc",
+        "value": 15,
+        "costName": "medico",
+        "before": 71.82000000000002,
+        "after": 56.82000000000002
+      },
+      {
+        "day": "Fri",
+        "id": "052022Aug",
+        "extra": "d2nUZ",
+        "value": 4,
+        "costName": "comida",
+        "before": 56.82000000000002,
+        "after": 52.82000000000002
+      },
+      {
+        "day": "Fri",
+        "id": "052022Aug",
+        "extra": "8wFhq",
+        "value": 0.35,
+        "costName": "transporte",
+        "before": 52.82000000000002,
+        "after": 52.47000000000002
+      },
+      {
+        "day": "Fri",
+        "id": "052022Aug",
+        "extra": "ZyvpP",
+        "value": 0.6,
+        "costName": "snacks",
+        "before": 52.47000000000002,
+        "after": 51.87000000000002
+      },
+      {
+        "day": "Mon",
+        "id": "082022Aug",
+        "extra": "z20EQ",
+        "value": 0.35,
+        "costName": "snacks",
+        "before": 91.87000000000002,
+        "after": 91.52000000000002
+      },
+      {
+        "day": "Mon",
+        "id": "082022Aug",
+        "extra": "GfF9h",
+        "value": 2.5,
+        "costName": "social",
+        "before": 91.52000000000002,
+        "after": 89.02000000000002
+      },
+      {
+        "day": "Mon",
+        "id": "082022Aug",
+        "extra": "Wp5VU",
+        "value": 18.3,
+        "costName": "medico",
+        "before": 89.02000000000002,
+        "after": 70.72000000000003
+      },
+      {
+        "day": "Sat",
+        "id": "132022Aug",
+        "extra": "7kEHA",
+        "value": 20,
+        "costName": "imprevisto",
+        "before": 70.72000000000003,
+        "after": 50.72000000000003
+      },
+      {
+        "day": "Sun",
+        "id": "142022Aug",
+        "extra": "db9vU",
+        "value": 0.01,
+        "costName": "snacks",
+        "before": 89.62000000000003,
+        "after": 89.61000000000003
+      },
+      {
+        "day": "Wed",
+        "id": "172022Aug",
+        "extra": "FFuWi",
+        "value": 6,
+        "costName": "comida",
+        "before": 89.61000000000003,
+        "after": 83.61000000000003
       }
     ],
     "rest": [{ "day": "mar", "id": 0, "value": 0, "after": 0, "before": 0 }]
