@@ -20,6 +20,18 @@ Content-Type: application/json
             "day": "Sun"
       }
 }
+###
+
+post https://mymone.azurewebsites.net/money
+Content-Type: application/json
+
+
+{ 
+      "name": "jorge593",
+      "date": { 
+            "day": "Sun"
+      }
+}
 
 
 ###
