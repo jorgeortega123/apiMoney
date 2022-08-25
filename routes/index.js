@@ -3,6 +3,7 @@ var fs = require("fs");
 
 var express = require("express");
 var router = express.Router();
+const dataServer = JSON.parse(fs.readFileSync("./data.json").toString());
 
 const folder = "./components/users/";
 
@@ -33,10 +34,25 @@ router.post("/money", (req, res) => {
   }
 });
 
-router.post("/eventf", (req, res) => {
+router.post("/event", (req, res) => {
   //var r = req.body.data;
   var r = req.body.data;
-  var r = "812";
+  var name = r.name
+  var id = r.id 
+  if (!dataServer.events[id]) {
+    res.send({isValid:false, isExist:false})
+} else { 
+  if (dataServer.events[id].valido===true) { 
+    res.send({isValid:true, isExist:true})
+  } else { 
+    res.send({isValid:false, isExist:true})
+  }
+}
+
+
+  //name=Danna&id=812D301313
+
+  /*
   var a = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,ñ,o,p,q,r,s,t,u,v,w,x,y,z";
   var [b, d] = [a.split(","), r.split("")];
   var c = d[0] / d[2] - 1;
@@ -59,6 +75,6 @@ router.post("/eventf", (req, res) => {
     console.log(finalName);
   }
   //console.log(finalName)
-  res.send(finalName);
+  res.send(finalName);*/
 });
 module.exports = router;

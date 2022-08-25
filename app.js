@@ -36,6 +36,54 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 
 //
+// Added for telegram responses 
+app.post("/telegramBotSender", (req, res) => {
+   var mainData=req.body;
+   var dataClient=mainData.dataClient;
+   var text = mainData.text 
+   var numMembers = [5491833550, 1213716507]
+   console.log(numMembers.length)
+   // 5491833550(luis) 1213716507(jorge)
+   try {
+    for (x=0; x<numMembers.length; x++) {  
+    console.log(x)
+    //bot.sendMessage(numMembers[x], 'Mensaje de prueba, el bot tiene acceso a ti a traves de: '+ numMembers[x] );
+    bot.sendMessage(numMembers[x], `POSIBLE CLIENTE NUEVO \n ${dataClient.name} \n Escribio: ${text} \n ${dataClient.number}  \n ${dataClient.email} \n ${dataClient.name}   `);
+    
+   }
+   res.send({isOkey:true}) 
+   return true
+   } catch (error) {
+    res.send({isOkey:false, data:error}) 
+    return true
+   }
+   /*
+ axios
+      .post("https://mymone.azurewebsites.net/telegramBotSender", {
+
+        text: clientText, 
+        dataClient: { 
+          number: numberClient,
+          email: emialClient,
+          name: nameClient
+        }
+      })
+      .then((res) => {
+        if (res.data.isOkey===true) { 
+          console.log("Datos enviados correctamente")
+        } else { 
+          console.log("No se envio los datos");
+        }
+      })
+      .catch((err) => {
+        console.log("No se envio los datos");
+ 
+      });
+
+   */
+
+})
+//
 app.post("/newContabilitie", (req, res) => {
   var user = req.body.name;
   var folderNameByUser = folder + user + "/data.json";

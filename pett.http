@@ -6,7 +6,24 @@ Content-Type: application/json
 { 
       "user": "jorge593"
 }
+###
 
+
+post https://mymone.azurewebsites.net/telegramBotSender
+
+###
+post {{api}}/telegramBotSender
+Content-Type: application/json
+
+
+{ 
+     "text": "Hola quiero esta cualidades dentro de mi pagina: modo blanco adecuado para la vista", 
+        "dataClient": { 
+          "number": "0962716235",
+          "email": "someemial@gmail.com",
+          "name": "Benito de la Torres"
+        }
+}
 
 ###
 

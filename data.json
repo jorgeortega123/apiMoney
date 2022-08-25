@@ -1,5 +1,8 @@
 {
      "eneableDb": true,
-     "token": "5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko"
+     "token": "5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko",
+     "events" : {
+          "812D301313": {"valido": true}
+     }
 
 }
