@@ -32,32 +32,128 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/", indexRouter);
 
 //
-// Added for telegram responses 
-app.post("/telegramBotSender", (req, res) => {
-   var mainData=req.body;
-   var dataClient=mainData.dataClient;
-   var text = mainData.text 
-   var numMembers = [5491833550, 1213716507]
-   console.log(numMembers.length)
-   // 5491833550(luis) 1213716507(jorge)
-   try {
-    for (x=0; x<numMembers.length; x++) {  
-    console.log(x)
-    //bot.sendMessage(numMembers[x], 'Mensaje de prueba, el bot tiene acceso a ti a traves de: '+ numMembers[x] );
-    bot.sendMessage(numMembers[x], `POSIBLE CLIENTE NUEVO \n ${dataClient.name} \n Escribio: ${text} \n ${dataClient.number}  \n ${dataClient.email} \n ${dataClient.name}   `);
-    
-   }
-   res.send({isOkey:true}) 
-   return true
-   } catch (error) {
-    res.send({isOkey:false, data:error}) 
+// Added for telegram responses
+app.post("/editDebst", (req, res) => {
+  var data = req.body;
+  var folderNameByUser = folder + data.user + "/data.json";
+  var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
+  var main = credentials.fixed
+  if (data.action==='add') { 
+    for (let a=0; a<main.length; a++ ) { 
+      if (data.name === main[a].name ) { 
+        res.json({
+          title: "Error",
+          data: "Ya existe",
+          message: "error",
+          extra: 100,
+        });
+        return true
+      } 
+    }
+    credentials.fixed.push({ 
+      name: data.name, 
+      value: data.value
+    })
+    fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+    res.json({
+      title: "Siuuu",
+      data: "Se agrego",
+      message: "success",
+      extra: 100,
+    });
     return true
-   }
-   /*
+  }
+  else if (data.action==='del') { 
+    var found3 = null
+
+    for (let a=0; a<main.length; a++ ) { 
+    if (data.name === main[a].name ) { 
+      found3 = a
+    }
+
+  }
+  if(found3===null) { 
+    res.json({
+      title: "Error",
+      data: "No se puede eliminar porque no existe",
+      message: "error",
+      extra: 100,
+    });
+    return true
+  }
+  credentials.fixed.splice(found3, found3 + 1);
+  fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+  res.json({
+    title: "Siuu",
+    data: "Se elimino la deuda fija",
+    message: "success",
+    extra: 100,
+  });
+  return true
+  } else if (data.action==='edit') { 
+    var found4 = null
+    for (let a=0; a<main.length; a++ ) { 
+    if (data.name === main[a].name ) { 
+      credentials.fixed[a].value = data.value
+      fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+      res.json({
+        title: "Siuu",
+        data: "Se edit la informacion",
+        message: "success",
+        extra: 100,
+      });
+      return true
+    }
+  
+  }
+  if(found4===null) { 
+    res.json({
+      title: "Error",
+      data: "No se puede editar porque no existe",
+      message: "error",
+      extra: 100,
+    });
+    return true
+  } 
+ 
+  } else { 
+    res.json({
+      title: "Error",
+      data: "No se reconoce",
+      message: "error",
+      extra: 100,
+    });
+    return true
+  }
+  
+})
+
+app.post("/telegramBotSender", (req, res) => {
+  var mainData = req.body;
+  var dataClient = mainData.dataClient;
+  var text = mainData.text;
+  var numMembers = [5491833550, 1213716507];
+  console.log(numMembers.length);
+  // 5491833550(luis) 1213716507(jorge)
+  try {
+    for (x = 0; x < numMembers.length; x++) {
+      console.log(x);
+      //bot.sendMessage(numMembers[x], 'Mensaje de prueba, el bot tiene acceso a ti a traves de: '+ numMembers[x] );
+      bot.sendMessage(
+        numMembers[x],
+        `POSIBLE CLIENTE NUEVO \n ${dataClient.name} \n Escribio: ${text} \n ${dataClient.number}  \n ${dataClient.email} \n ${dataClient.name}   `
+      );
+    }
+    res.send({ isOkey: true });
+    return true;
+  } catch (error) {
+    res.send({ isOkey: false, data: error });
+    return true;
+  }
+  /*
  axios
       .post("https://mymone.azurewebsites.net/telegramBotSender", {
 
@@ -81,8 +177,121 @@ app.post("/telegramBotSender", (req, res) => {
       });
 
    */
+});
+//
+app.post("/fixedDebst", (req, res) => {
+  console.log("asdasd");
+  console.log(req.body.data);
+  /*
+ axios.post(server + "/fixed/debst", {
+    name: nameModal,
+    week: document.getElementById('weekValue').value | 0,
+    paid: 0,
+    total: totalMount,
+    action: whatModal,
+    user: 'jorge593',
+  });*/
+  var data = req.body;
+  var whatToDo = data.action;
+  var folderNameByUser = folder + data.user + "/data.json";
+  if (!fs.existsSync(folderNameByUser)) {
+    res.json({
+      title: "Error",
+      data: "No se econtro información del usuario",
+      message: "error",
+      extra: 100,
+    });
+  }
 
-})
+  var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
+
+  if (whatToDo === "add") {
+   var found1 = null
+    for (let i = 0; i < credentials.fixedDebst.length; i++) {
+      if (credentials.fixedDebst[i].name == data.name) {
+        found1 = i;
+      }
+    }if (found1 != null) { 
+     
+    res.json({
+      title: `Ya existe un fijo con este nombre`,
+      data: "Todo salio mal",
+      message: "error",
+      extra: 100,
+    });
+    return true;
+    }
+    ///
+    credentials.fixedDebst.push({
+      name: data.name,
+      week: data.week,
+      paid: 0,
+      total: data.total,
+    });
+    fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+    res.json({
+      title: `Se agrego ${data.name}`,
+      data: "Todo salio bien",
+      message: "success",
+      extra: 100,
+    });
+    return true;
+    ///
+  } else if (whatToDo === "edit") {
+    console.log('sadasd')
+    let found = null;
+
+    for (let j = 0; j < credentials.fixedDebst.length; j++) {
+      if (credentials.fixedDebst[j].name == data.name) {
+        console.log("asdasd")
+        found = j;
+      }
+    }
+    if (found === null) {
+      res.json({
+        title: "Uncoreset",
+        data: "No se encontro la deuda fija",
+        message: "warning",
+        extra: 100,
+      });
+      return true;
+    }
+
+    var total = credentials.fixedDebst[found].total;
+    var oldValue = credentials.fixedDebst[found].paid;
+    var newValue = oldValue + data.mount;
+    if (data.mount >= oldValue - total) {
+      credentials.fixedDebst.splice(found, found + 1);
+      fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+      res.json({
+        title: "success",
+        data: "Se termino la deuda",
+        message: "error",
+        extra: 100,
+      });
+      return true;
+    }
+    credentials.fixedDebst[found].paid = newValue;
+    fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+    res.json({
+      title: "success",
+      data: `mount update ${oldValue} to ${newValue}`,
+      message: "error",
+      extra: 100,
+    });
+    return true;
+    //if (mount - paid <= value) {
+  } else {
+    res.json({
+      title: "erro",
+      data: `No se reconocio el comenado`,
+      message: "error",
+      extra: 100,
+    });
+    return true;
+  }
+});
+
 //
 app.post("/newContabilitie", (req, res) => {
   var user = req.body.name;
@@ -97,23 +306,26 @@ app.post("/newContabilitie", (req, res) => {
   }
   //
   var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
-  if (credentials.isValueSunday===true) {res.json({
-    title: "Uncoreset",
-    data: "Ya se realizo el domingo",
-    message: "warning",
-    extra: 100,
-  });return true}
+  if (credentials.isValueSunday === true) {
+    res.json({
+      title: "Uncoreset",
+      data: "Ya se realizo el domingo",
+      message: "warning",
+      extra: 100,
+    });
+    return true;
+  }
   var fixedCost = credentials.cost[0].fixed;
   var variablesCost = credentials.cost[0].variables;
   //console.log(nameEdit);
   //console.log(l);
   for (var i = 0; i < fixedCost.length; i++) {
-    credentials.cost[0].fixed[i].value = 0
+    credentials.cost[0].fixed[i].value = 0;
   }
   for (var a = 0; i < variablesCost.length; a++) {
-    credentials.cost[0].variables[a].value = 0
+    credentials.cost[0].variables[a].value = 0;
   }
-  credentials.isValueSunday=true
+  credentials.isValueSunday = true;
   fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
   res.json({
     title: "Feliz inicio de semana!",
@@ -123,15 +335,7 @@ app.post("/newContabilitie", (req, res) => {
   });
 
   //
-
-
-
-
-
-})
-
-
-
+});
 
 app.get("/eventt", (req, res) => {
   console.log("ola");
@@ -213,7 +417,7 @@ app.post("/login", (req, res) => {
       extra: 205,
       token: user,
     });
-    5
+    5;
   } else {
     var telegramId = credentials.chatIdTelegram;
     var sms =

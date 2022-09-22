@@ -37,18 +37,18 @@ router.post("/money", (req, res) => {
 router.post("/event", (req, res) => {
   //var r = req.body.data;
   var r = req.body.data;
-  var name = r.name
-  var id = r.id 
+  var name = r.name;
+  var id = r.id;
   if (!dataServer.events[id]) {
-    res.send({isValid:false, isExist:false})
-} else { 
-  if (dataServer.events[id].valido===true) { 
-    res.send({isValid:true, isExist:true})
-  } else { 
-    res.send({isValid:false, isExist:true})
+    res.send({ isValid: false, isExist: false });
+  } else {
+    if (dataServer.events[id].valido === true) {
+      res.send({ isValid: true, isExist: true });
+    } else {
+      res.send({ isValid: false, isExist: true });
+    }
   }
-}
-
+  
 
   //name=Danna&id=812D301313
 

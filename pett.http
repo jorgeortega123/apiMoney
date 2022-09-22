@@ -8,26 +8,68 @@ Content-Type: application/json
 }
 ###
 
+post {{api}}/fixedDebst
 
+Content-Type: application/json
+
+{ 
+     "name": "mom",
+      "week":  6,
+      "paid": 0,
+      "total": 120,
+      "action": "add",
+      "user": "jorge593",
+}
+
+###
 post https://mymone.azurewebsites.net/telegramBotSender
 
 ###
-post {{api}}/telegramBotSender
+post https://mymone.azurewebsites.net/event
+Content-Type: application/json
+
+
+{ "data": { 
+ "name": "Danna",
+     "id": "812D301313" 
+}
+    
+}
+
+
+###
+
+
+post http://127.0.0.1:4000/editDebst
 Content-Type: application/json
 
 
 { 
-     "text": "Hola quiero esta cualidades dentro de mi pagina: modo blanco adecuado para la vista", 
-        "dataClient": { 
-          "number": "0962716235",
-          "email": "someemial@gmail.com",
-          "name": "Benito de la Torres"
-        }
+     "name": "ortodoncia",
+     "value": 20,
+      "user": "jorge593", 
+      "action": "edit"
+}
+
+###
+post http://127.0.0.1:4000/fixedDebst
+Content-Type: application/json
+
+
+{ 
+     "name": "mom",
+      "week":  6,
+      "paid": 0,
+      "total": 120,
+      "action": "edit",
+      "mount": 128.0,
+      "user": "jorge593"
 }
 
 ###
 
 post {{api}}/newContabilitie
+
 Content-Type: application/json
 
 
