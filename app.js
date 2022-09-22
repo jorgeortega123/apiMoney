@@ -226,6 +226,7 @@ app.post("/fixedDebst", (req, res) => {
       name: data.name,
       week: data.week,
       paid: 0,
+      timesWeek: 0,
       total: data.total,
     });
     fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
@@ -260,18 +261,36 @@ app.post("/fixedDebst", (req, res) => {
     var total = credentials.fixedDebst[found].total;
     var oldValue = credentials.fixedDebst[found].paid;
     var newValue = oldValue + data.mount;
-    if (data.mount >= oldValue - total) {
-      credentials.fixedDebst.splice(found, found + 1);
-      fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+    var newTime = credentials.fixedDebst[found].timesWeek;
+    if (data.mount > (total / (credentials.fixedDebst[found].week - newTime)) ) { 
       res.json({
         title: "success",
-        data: "Se termino la deuda",
+        data: `No puedes acreditar un monto inferior a ${total / (credentials.fixedDebst[found].week - newTime)}`,
         message: "error",
         extra: 100,
       });
       return true;
     }
+     var beforeCash = credentials.restOfLastWeek[1].value;
+    credentials.fixedDebst[found].timesWeek = newTime + 1
+    if (data.mount >= oldValue - total) {
+      var toPay = oldValue - total // 20  / 150 = 130
+      var payEver = - data.mount + toPay // -130 + 131
+     // var sum2 = oldValue - total + data.mount; // 67 - 150 + 68
+ 
+      credentials.restOfLastWeek[1].value = beforeCash + payEver;
+      credentials.fixedDebst.splice(found, found + 1);
+      fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+      res.json({
+        title: "success",
+        data: "Se termino la deuda",
+        message: "success",
+        extra: 100,
+      });
+      return true;
+    }
     credentials.fixedDebst[found].paid = newValue;
+    credentials.restOfLastWeek[1].value = beforeCash - data.mount ;
     fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
     res.json({
       title: "success",
