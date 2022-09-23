@@ -262,10 +262,10 @@ app.post("/fixedDebst", (req, res) => {
     var oldValue = credentials.fixedDebst[found].paid;
     var newValue = oldValue + data.mount;
     var newTime = credentials.fixedDebst[found].timesWeek;
-    if (data.mount > (total / (credentials.fixedDebst[found].week - newTime)) ) { 
+    if (data.mount < ((total - oldValue) / (credentials.fixedDebst[found].week - newTime)) ) { 
       res.json({
         title: "success",
-        data: `No puedes acreditar un monto inferior a ${total / (credentials.fixedDebst[found].week - newTime)}`,
+        data: `No puedes acreditar un monto inferior a ${(total - oldValue) / (credentials.fixedDebst[found].week - newTime)}`,
         message: "error",
         extra: 100,
       });
@@ -273,7 +273,7 @@ app.post("/fixedDebst", (req, res) => {
     }
      var beforeCash = credentials.restOfLastWeek[1].value;
     credentials.fixedDebst[found].timesWeek = newTime + 1
-    if (data.mount >= oldValue - total) {
+    if (data.mount >= total - oldValue) {
       var toPay = oldValue - total // 20  / 150 = 130
       var payEver = - data.mount + toPay // -130 + 131
      // var sum2 = oldValue - total + data.mount; // 67 - 150 + 68

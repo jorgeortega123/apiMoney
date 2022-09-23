@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ###
-post http://127.0.0.1:4000/fixedDebst
+post {{api}}/fixedDebst
 Content-Type: application/json
 
 
@@ -62,7 +62,7 @@ Content-Type: application/json
       "paid": 0,
       "total": 120,
       "action": "edit",
-      "mount": 128.0,
+      "mount": 1,
       "user": "jorge593"
 }
 
