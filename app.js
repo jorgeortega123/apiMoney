@@ -181,6 +181,29 @@ app.post("/telegramBotSender", (req, res) => {
    */
 });
 //
+app.post("/overCost", (req, res) => {
+  var data = req.body;
+  var folderNameByUser = folder + data.user + "/data.json";
+  if (!fs.existsSync(folderNameByUser)) {
+    res.json({
+      title: "Error",
+      data: "No se econtro información del usuario",
+      message: "error",
+      extra: 100,
+    });
+  }
+  var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
+  credentials.history.rest.value = data.value
+  fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+  res.json({
+    title: `Se modifico ${data.value}`,
+    data: "Todo salio bien",
+    message: "success",
+    extra: 100,
+  });
+  return true;
+})
+//
 app.post("/fixedDebst", (req, res) => {
   console.log("asdasd");
   console.log(req.body.data);
