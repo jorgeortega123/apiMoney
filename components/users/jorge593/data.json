@@ -13,7 +13,7 @@
                 {
                     "title": "medico",
                     "color": "#0070ff",
-                    "value": 2.9,
+                    "value": 2.9099999999999997,
                     "cost": 5,
                     "max": 5,
                     "monthly": 20
@@ -301,7 +301,15 @@
             "text": ""
         }
     ],
-    "dinnerMove": [],
+    "dinnerMove": [
+        {
+            "name": "medico",
+            "valor": 0.01,
+            "type": "fixed",
+            "before": 2.9,
+            "after": 2.9099999999999997
+        }
+    ],
     "totalBill": 0,
     "restOfLastWeek": [
         {
@@ -310,7 +318,7 @@
         },
         {
             "title": "patrimonio",
-            "value": 68.38000000000001
+            "value": 68.37
         }
     ],
     "savings": [
@@ -328,7 +336,14 @@
         }
     ],
     "history": {
-        "today": [],
+        "today": [
+            {
+                "value": 0.01,
+                "costName": "medico",
+                "before": 68.38000000000001,
+                "after": 68.37
+            }
+        ],
         "rest": [
             {
                 "date": "mar",

@@ -534,7 +534,7 @@ app.post("/edit", (req, res) => {
 
   var id = randomId(5, "Ao0");
   var formJsonDa = {
-    date: bodyReq.date,
+    date: dayjs().$d,
     value: valueEdit,
     costName: l[arrNumberFound].title,
     before: beforeCredits,
@@ -547,7 +547,7 @@ app.post("/edit", (req, res) => {
     type: typeCost,
     before: beforeValue,
     after: beforeValue + valueEdit,
-    date: bodyReq.date
+    date: dayjs().$d
   });
   fs.writeFileSync(a, JSON.stringify(credentials));
   if (s < valueEdit) {
