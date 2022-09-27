@@ -67,7 +67,16 @@ Content-Type: application/json
 }
 ###
 
-get {{api}}/money
+post https://mymone.azurewebsites.net/money
+Content-Type: application/json
+
+
+{ "data": { 
+       "name": "jorge593"
+}
+   
+     
+}
 
 ###
 

@@ -18,7 +18,7 @@ router.post("/money", (req, res) => {
   } else {
     var credentials = JSON.parse(fs.readFileSync(a).toString());
     credentials.history.rest.date = dayjs().$d
-    fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+    fs.writeFileSync(a, JSON.stringify(credentials));
     res.json(credentials);
   }
 });
