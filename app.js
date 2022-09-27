@@ -1,4 +1,5 @@
 var morgan = require("morgan");
+var dayjs = require("dayjs");
 var cors = require("cors");
 var createError = require("http-errors");
 var express = require("express");
@@ -10,6 +11,7 @@ var TelegramBot = require("node-telegram-bot-api");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var randomId = require("random-id");
+
 var app = express();
 //
 //const token = '5595672851:AAF0e6T-nvOkjujxguT9UrO9ldalczegIko';
@@ -19,7 +21,7 @@ const filename = "./data.json";
 const rawdata = fs.readFileSync(filename);
 const student = JSON.parse(rawdata);
 const token = student.token;
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token);
 //
 app.use(cors());
 app.use(morgan("dev"));
@@ -228,6 +230,8 @@ app.post("/fixedDebst", (req, res) => {
       paid: 0,
       timesWeek: 0,
       total: data.total,
+      date: data.date,
+      lastUpdate: data.date
     });
     fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
     res.json({
@@ -239,12 +243,12 @@ app.post("/fixedDebst", (req, res) => {
     return true;
     ///
   } else if (whatToDo === "edit") {
-    console.log('sadasd')
+
     let found = null;
 
     for (let j = 0; j < credentials.fixedDebst.length; j++) {
       if (credentials.fixedDebst[j].name == data.name) {
-        console.log("asdasd")
+ 
         found = j;
       }
     }
@@ -257,7 +261,15 @@ app.post("/fixedDebst", (req, res) => {
       });
       return true;
     }
-
+    if (data.mount > credentials.restOfLastWeek[1]) {
+      res.json({
+        title: "Saldo insuficiente en: Patrimonio",
+        data: "No existen fondos suficientes",
+        extra: 105,
+        message: "error",
+      });
+      return true;
+    }
     var total = credentials.fixedDebst[found].total;
     var oldValue = credentials.fixedDebst[found].paid;
     var newValue = oldValue + data.mount;
@@ -272,6 +284,7 @@ app.post("/fixedDebst", (req, res) => {
       return true;
     }
      var beforeCash = credentials.restOfLastWeek[1].value;
+     credentials.fixedDebst[found].lastUpdate = data.date
     credentials.fixedDebst[found].timesWeek = newTime + 1
     if (data.mount >= total - oldValue) {
       var toPay = oldValue - total // 20  / 150 = 130
@@ -494,31 +507,24 @@ app.post("/edit", (req, res) => {
 
   var beforeCredits = credentials.restOfLastWeek[1].value;
   credentials.restOfLastWeek[1].value = beforeCredits - valueEdit;
-  // new
-  var d = new Date();
-  //var dayName = d.toString().split(" ")[0];
-  var monthDay = d.toString().split(" ")[1];
-  //var numberDay = d.toString().split(" ")[2];
-  var yearDay = d.toString().split(" ")[3];
+
+
   var id = randomId(5, "Ao0");
-  //numberDay + yearDay + monthDay;
   var formJsonDa = {
-    day: bodyReq.edit.nameDay,
-    id: bodyReq.edit.numberDay + yearDay + bodyReq.edit.monthDay,
-    extra: id,
+    date: bodyReq.date,
     value: valueEdit,
     costName: l[arrNumberFound].title,
     before: beforeCredits,
     after: beforeCredits - valueEdit,
   };
   credentials.history.today.push(formJsonDa);
-  // new
   credentials.dinnerMove.push({
     name: nameEdit,
     valor: valueEdit,
     type: typeCost,
     before: beforeValue,
     after: beforeValue + valueEdit,
+    date: bodyReq.date
   });
   fs.writeFileSync(a, JSON.stringify(credentials));
   if (s < valueEdit) {
@@ -687,6 +693,7 @@ app.post("/udapteDebts", (req, res) => {
         afterWorth: a - value,
         type: "in",
         text: "",
+        date: dayjs().$d
       };
       credentials.historyDebst.push(historyToDebst);
       // AÑADIDO NUEVO ADD HISTORY

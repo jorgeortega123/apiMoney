@@ -1,6 +1,6 @@
 var express = require("express");
 var fs = require("fs");
-
+var dayjs = require("dayjs");
 var express = require("express");
 var router = express.Router();
 const dataServer = JSON.parse(fs.readFileSync("./data.json").toString());
@@ -11,26 +11,15 @@ const folder = "./components/users/";
 router.post("/money", (req, res) => {
   console.log(req.body);
   var studentt = req.body;
-  var isSunday = req.body.date.day;
   var a = folder + studentt.name + "/data.json";
   if (!fs.existsSync(a)) {
     res.json({ data: "No se econtro información del usuario" });
     return false;
   } else {
     var credentials = JSON.parse(fs.readFileSync(a).toString());
-    if (isSunday != "Sun") {
-      if (credentials.isValueSunday === false) {
-        res.json(credentials);
-        return true;
-      } else {
-        credentials.isValueSunday = false;
-        fs.writeFileSync(a, JSON.stringify(credentials));
-        res.json(credentials);
-        return true;
-      }
-    } else {
-      res.json(credentials);
-    }
+    credentials.history.rest.date = dayjs().$d
+    fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
+    res.json(credentials);
   }
 });
 

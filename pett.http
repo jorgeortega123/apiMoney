@@ -52,19 +52,22 @@ Content-Type: application/json
 }
 
 ###
-post {{api}}/fixedDebst
+post https://mymone.azurewebsites.net/fixedDebst
 Content-Type: application/json
 
 
 { 
-     "name": "mom",
-      "week":  6,
+     "name": "tv",
+      "week":  5,
       "paid": 0,
-      "total": 120,
+      "total": 20,
       "action": "edit",
-      "mount": 1,
+      "mount": 5,
       "user": "jorge593"
 }
+###
+
+get {{api}}/money
 
 ###
 
