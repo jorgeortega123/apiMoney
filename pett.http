@@ -36,17 +36,37 @@ Content-Type: application/json
     
 }
 
+###
+post {{api}}/overCost
+Content-Type: application/json
+
+
+{ "user": "jorge593",
+ "value": 22.2
+}
+
+
+
+###
+###
+post {{api}}/telegramCV
+Content-Type: application/json
+
+
+{ "text": "ola xd "
+}
+
+
 
 ###
 
-
-post http://127.0.0.1:4000/editDebst
+post https://mymone.azurewebsites.net/editDebst
 Content-Type: application/json
 
 
 { 
      "name": "ortodoncia",
-     "value": 20,
+     "value": 30,
       "user": "jorge593", 
       "action": "edit"
 }
@@ -58,11 +78,11 @@ Content-Type: application/json
 
 { 
      "name": "tv",
-      "week":  5,
+      "week":  4,
       "paid": 0,
-      "total": 20,
+      "total": 30 ,
       "action": "edit",
-      "mount": 5,
+      "mount": 30,
       "user": "jorge593"
 }
 ###
@@ -80,7 +100,7 @@ Content-Type: application/json
 
 ###
 
-post {{api}}/newContabilitie
+post https://mymone.azurewebsites.net/newContabilitie
 
 Content-Type: application/json
 
@@ -93,7 +113,22 @@ Content-Type: application/json
 }
 ###
 
-post https://mymone.azurewebsites.net/money
+post https://mymone.azurewebsites.net/overCost
+Content-Type: application/json
+
+
+{ 
+      "user": "jorge593",
+      "date": { 
+            "day": "Sun"
+      }
+}
+
+
+###
+###
+
+post https://mymone.azurewebsites.net/overCost
 Content-Type: application/json
 
 

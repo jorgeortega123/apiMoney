@@ -3,7 +3,7 @@
     "name": "Jorge",
     "secondName": "Ortega",
     "actualDay": "Mon",
-    "isValueSunday": false,
+    "isValueSunday": true,
     "perWeek": 45,
     "chatIdTelegram": 1213716507,
     "perMonth": 180,
@@ -13,7 +13,7 @@
                 {
                     "title": "medico",
                     "color": "#0070ff",
-                    "value": 2.9099999999999997,
+                    "value": 0,
                     "cost": 5,
                     "max": 5,
                     "monthly": 20
@@ -21,7 +21,7 @@
                 {
                     "title": "cooperativa",
                     "color": "#D7FF00",
-                    "value": 0,
+                    "value": 0.01,
                     "cost": 2.75,
                     "max": 2.75,
                     "monthly": 11
@@ -37,21 +37,21 @@
                 {
                     "title": "comida",
                     "color": "#FFEC00",
-                    "value": 33.5,
+                    "value": 10.45,
                     "cost": 5,
                     "max": 8
                 },
                 {
                     "title": "snacks",
                     "color": "#FF7300",
-                    "value": 0,
+                    "value": 0.75,
                     "cost": 1.5,
                     "max": 4
                 },
                 {
                     "title": "transporte",
                     "color": "#007ED6",
-                    "value": 0.9,
+                    "value": 0.35,
                     "cost": 2.4,
                     "max": 3
                 },
@@ -102,7 +102,15 @@
             "value": 20
         }
     ],
-    "fixedDebst": [],
+    "fixedDebst": [
+        {
+            "name": "tv",
+            "week": 8,
+            "paid": 0,
+            "timesWeek": 0,
+            "total": 18
+        }
+    ],
     "debts": [
         {
             "name": "luis",
@@ -114,7 +122,7 @@
             "name": "johanna",
             "relationship": "mama",
             "mount": 119,
-            "paid": 43.050000000000004
+            "paid": 57.150000000000006
         }
     ],
     "historyDebst": [
@@ -299,6 +307,17 @@
             "afterWorth": 68.38000000000001,
             "type": "de",
             "text": ""
+        },
+        {
+            "name": "johanna",
+            "incoming": 14.1,
+            "beforeDebst": 43.050000000000004,
+            "afterDebst": 57.150000000000006,
+            "beforeWorth": 68.32,
+            "afterWorth": 54.21999999999999,
+            "type": "in",
+            "text": "",
+            "date": "2022-09-27T04:31:19.073Z"
         }
     ],
     "dinnerMove": [
@@ -308,6 +327,94 @@
             "type": "fixed",
             "before": 2.9,
             "after": 2.9099999999999997
+        },
+        {
+            "name": "medico",
+            "valor": 0.01,
+            "type": "fixed",
+            "before": 2.9099999999999997,
+            "after": 2.9199999999999995,
+            "date": "2022-09-27T03:18:43.998Z"
+        },
+        {
+            "name": "cooperativa",
+            "valor": 0.01,
+            "type": "fixed",
+            "before": 0,
+            "after": 0.01,
+            "date": "2022-09-27T03:22:16.549Z"
+        },
+        {
+            "name": "recarga",
+            "valor": 0.01,
+            "type": "fixed",
+            "before": 0,
+            "after": 0.01,
+            "date": "2022-09-27T03:43:54.419Z"
+        },
+        {
+            "name": "comida",
+            "valor": 0.02,
+            "type": "fixed",
+            "before": 33.5,
+            "after": 33.52,
+            "date": "2022-09-27T04:27:35.235Z"
+        },
+        {
+            "name": "transporte",
+            "valor": 0.35,
+            "type": "fixed",
+            "before": 0,
+            "after": 0.35,
+            "date": "2022-09-27T13:35:16.489Z"
+        },
+        {
+            "name": "comida",
+            "valor": 1.75,
+            "type": "fixed",
+            "before": 0,
+            "after": 1.75,
+            "date": "2022-09-27T13:56:44.244Z"
+        },
+        {
+            "name": "snacks",
+            "valor": 0.75,
+            "type": "fixed",
+            "before": 0,
+            "after": 0.75,
+            "date": "2022-09-27T18:24:27.807Z"
+        },
+        {
+            "name": "comida",
+            "valor": 3.25,
+            "type": "fixed",
+            "before": 1.75,
+            "after": 5,
+            "date": "2022-09-27T19:15:32.714Z"
+        },
+        {
+            "name": "comida",
+            "valor": 3.5,
+            "type": "fixed",
+            "before": 5,
+            "after": 8.5,
+            "date": "2022-09-28T03:06:59.049Z"
+        },
+        {
+            "name": "comida",
+            "valor": 1.95,
+            "type": "fixed",
+            "before": 8.5,
+            "after": 10.45,
+            "date": "2022-09-28T03:07:14.555Z"
+        },
+        {
+            "name": "cooperativa",
+            "valor": 0.01,
+            "type": "fixed",
+            "before": 0,
+            "after": 0.01,
+            "date": "2022-09-28T17:21:57.742Z"
         }
     ],
     "totalBill": 0,
@@ -318,7 +425,7 @@
         },
         {
             "title": "patrimonio",
-            "value": 68.37
+            "value": 68.44
         }
     ],
     "savings": [
@@ -342,6 +449,83 @@
                 "costName": "medico",
                 "before": 68.38000000000001,
                 "after": 68.37
+            },
+            {
+                "date": "2022-09-27T03:18:43.998Z",
+                "value": 0.01,
+                "costName": "medico",
+                "before": 68.37,
+                "after": 68.36
+            },
+            {
+                "date": "2022-09-27T03:22:16.549Z",
+                "value": 0.01,
+                "costName": "cooperativa",
+                "before": 68.36,
+                "after": 68.35
+            },
+            {
+                "date": "2022-09-27T03:43:54.416Z",
+                "value": 0.01,
+                "costName": "recarga",
+                "before": 68.35,
+                "after": 68.33999999999999
+            },
+            {
+                "date": "2022-09-27T04:27:35.235Z",
+                "value": 0.02,
+                "costName": "comida",
+                "before": 68.33999999999999,
+                "after": 68.32
+            },
+            {
+                "date": "2022-09-27T13:35:16.489Z",
+                "value": 0.35,
+                "costName": "transporte",
+                "before": 80,
+                "after": 79.65
+            },
+            {
+                "date": "2022-09-27T13:56:44.244Z",
+                "value": 1.75,
+                "costName": "comida",
+                "before": 79.65,
+                "after": 77.9
+            },
+            {
+                "date": "2022-09-27T18:24:27.807Z",
+                "value": 0.75,
+                "costName": "snacks",
+                "before": 77.9,
+                "after": 77.15
+            },
+            {
+                "date": "2022-09-27T19:15:32.714Z",
+                "value": 3.25,
+                "costName": "comida",
+                "before": 77.15,
+                "after": 73.9
+            },
+            {
+                "date": "2022-09-28T03:06:59.048Z",
+                "value": 3.5,
+                "costName": "comida",
+                "before": 73.9,
+                "after": 70.4
+            },
+            {
+                "date": "2022-09-28T03:07:14.555Z",
+                "value": 1.95,
+                "costName": "comida",
+                "before": 70.4,
+                "after": 68.45
+            },
+            {
+                "date": "2022-09-28T17:21:57.742Z",
+                "value": 0.01,
+                "costName": "cooperativa",
+                "before": 68.45,
+                "after": 68.44
             }
         ],
         "rest": [

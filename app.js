@@ -132,6 +132,46 @@ app.post("/editDebst", (req, res) => {
   }
   
 })
+app.post("/telegramCV", (req, res) => {
+  var mainData = req.body;
+  var text = mainData.text;
+  // 5491833550(luis) 1213716507(jorge)
+  try {
+      bot.sendMessage(
+        1213716507,
+        `Alguien escribio: \n ${text}   `
+      );
+        res.send({ isOkey: true });
+    return true;
+    } catch (error) {
+    res.send({ isOkey: false, data: error });
+    return true;
+  }
+  /*
+ axios
+      .post("https://mymone.azurewebsites.net/telegramBotSender", {
+
+        text: clientText, 
+        dataClient: { 
+          number: numberClient,
+          email: emialClient,
+          name: nameClient
+        }
+      })
+      .then((res) => {
+        if (res.data.isOkey===true) { 
+          console.log("Datos enviados correctamente")
+        } else { 
+          console.log("No se envio los datos");
+        }
+      })
+      .catch((err) => {
+        console.log("No se envio los datos");
+ 
+      });
+
+   */
+});
 
 app.post("/telegramBotSender", (req, res) => {
   var mainData = req.body;
@@ -193,7 +233,7 @@ app.post("/overCost", (req, res) => {
     });
   }
   var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
-  credentials.history.rest.value = data.value
+  credentials.history.rest[0].value = data.value
   fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
   res.json({
     title: `Se modifico ${data.value}`,
