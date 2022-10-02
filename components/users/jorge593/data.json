@@ -21,7 +21,7 @@
                 {
                     "title": "cooperativa",
                     "color": "#D7FF00",
-                    "value": 0.01,
+                    "value": 0.11,
                     "cost": 2.75,
                     "max": 2.75,
                     "monthly": 11
@@ -37,7 +37,7 @@
                 {
                     "title": "comida",
                     "color": "#FFEC00",
-                    "value": 10.45,
+                    "value": 11.35,
                     "cost": 5,
                     "max": 8
                 },
@@ -51,7 +51,7 @@
                 {
                     "title": "transporte",
                     "color": "#007ED6",
-                    "value": 0.35,
+                    "value": 0.8,
                     "cost": 2.4,
                     "max": 3
                 },
@@ -415,6 +415,30 @@
             "before": 0,
             "after": 0.01,
             "date": "2022-09-28T17:21:57.742Z"
+        },
+        {
+            "name": "cooperativa",
+            "valor": 0.1,
+            "type": "fixed",
+            "before": 0.01,
+            "after": 0.11,
+            "date": "2022-09-30T00:48:29.959Z"
+        },
+        {
+            "name": "transporte",
+            "valor": 0.45,
+            "type": "fixed",
+            "before": 0.35,
+            "after": 0.8,
+            "date": "2022-09-30T17:57:51.410Z"
+        },
+        {
+            "name": "comida",
+            "valor": 0.9,
+            "type": "fixed",
+            "before": 10.45,
+            "after": 11.35,
+            "date": "2022-09-30T17:57:56.850Z"
         }
     ],
     "totalBill": 0,
@@ -425,7 +449,7 @@
         },
         {
             "title": "patrimonio",
-            "value": 68.44
+            "value": 66.99
         }
     ],
     "savings": [
@@ -526,16 +550,37 @@
                 "costName": "cooperativa",
                 "before": 68.45,
                 "after": 68.44
+            },
+            {
+                "date": "2022-09-30T00:48:29.959Z",
+                "value": 0.1,
+                "costName": "cooperativa",
+                "before": 68.44,
+                "after": 68.34
+            },
+            {
+                "date": "2022-09-30T17:57:51.410Z",
+                "value": 0.45,
+                "costName": "transporte",
+                "before": 68.34,
+                "after": 67.89
+            },
+            {
+                "date": "2022-09-30T17:57:56.850Z",
+                "value": 0.9,
+                "costName": "comida",
+                "before": 67.89,
+                "after": 66.99
             }
         ],
         "rest": [
             {
                 "date": "mar",
                 "id": 0,
-                "value": 0,
+                "value": 2.857142857142857,
                 "after": 0,
                 "before": 0
             }
         ]
     }
-}           
+}
