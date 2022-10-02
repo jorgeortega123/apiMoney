@@ -247,15 +247,6 @@ app.post("/overCost", (req, res) => {
 app.post("/fixedDebst", (req, res) => {
   console.log("asdasd");
   console.log(req.body.data);
-  /*
- axios.post(server + "/fixed/debst", {
-    name: nameModal,
-    week: document.getElementById('weekValue').value | 0,
-    paid: 0,
-    total: totalMount,
-    action: whatModal,
-    user: 'jorge593',
-  });*/
   var data = req.body;
   var whatToDo = data.action;
   var folderNameByUser = folder + data.user + "/data.json";
@@ -279,9 +270,9 @@ app.post("/fixedDebst", (req, res) => {
     }if (found1 != null) { 
      
     res.json({
-      title: `Ya existe un fijo con este nombre`,
-      data: "Todo salio mal",
-      message: "error",
+      title: `No se agrego`,
+      data: "Ya existe un fijo con este nombre",
+      message: "warning",
       extra: 100,
     });
     return true;
@@ -298,8 +289,8 @@ app.post("/fixedDebst", (req, res) => {
     });
     fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
     res.json({
-      title: `Se agrego ${data.name}`,
-      data: "Todo salio bien",
+      title:  "Satisfactorio",
+      data: `Se agrego ${data.name} a deudas fijas`,
       message: "success",
       extra: 100,
     });
@@ -317,8 +308,8 @@ app.post("/fixedDebst", (req, res) => {
     }
     if (found === null) {
       res.json({
-        title: "Uncoreset",
-        data: "No se encontro la deuda fija",
+        title: "No se pudo encontrar",
+        data: "No se encontro la deuda fija dentro de tu informacion",
         message: "warning",
         extra: 100,
       });
@@ -333,13 +324,13 @@ app.post("/fixedDebst", (req, res) => {
       });
       return true;
     }
-    var total = credentials.fixedDebst[found].total;
-    var oldValue = credentials.fixedDebst[found].paid;
-    var newValue = oldValue + data.mount;
-    var newTime = credentials.fixedDebst[found].timesWeek;
+    var total = Number(credentials.fixedDebst[found].total) ;
+    var oldValue = Number(credentials.fixedDebst[found].paid) 
+    var newValue = Number(oldValue + data.mount)
+    var newTime = Number(credentials.fixedDebst[found].timesWeek)
     if (data.mount < ((total - oldValue) / (credentials.fixedDebst[found].week - newTime)) ) { 
       res.json({
-        title: "success",
+        title: "Error",
         data: `No puedes acreditar un monto inferior a ${(total - oldValue) / (credentials.fixedDebst[found].week - newTime)}`,
         message: "error",
         extra: 100,
@@ -350,16 +341,15 @@ app.post("/fixedDebst", (req, res) => {
      credentials.fixedDebst[found].lastUpdate = data.date
     credentials.fixedDebst[found].timesWeek = newTime + 1
     if (data.mount >= total - oldValue) {
-      var toPay = oldValue - total // 20  / 150 = 130
+      var toPay =  total - oldValue   // 20  / 150 = 130
       var payEver = - data.mount + toPay // -130 + 131
-     // var sum2 = oldValue - total + data.mount; // 67 - 150 + 68
- 
+     var sum2 = oldValue - total + data.mount; // 67 - 150 + 68
       credentials.restOfLastWeek[1].value = beforeCash + payEver;
       credentials.fixedDebst.splice(found, found + 1);
       fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
       res.json({
-        title: "success",
-        data: "Se termino la deuda",
+        title: "Deuda fija terminada",
+        data: `Se termino la deuda de: ${data.name} `,
         message: "success",
         extra: 100,
       });
@@ -369,16 +359,16 @@ app.post("/fixedDebst", (req, res) => {
     credentials.restOfLastWeek[1].value = beforeCash - data.mount ;
     fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
     res.json({
-      title: "success",
-      data: `mount update ${oldValue} to ${newValue}`,
-      message: "error",
+      title: `Monto pagado actualizado de: ${data.name} `,
+      data: `Actulizado de: ${oldValue} a ${newValue}`,
+      message: "success",
       extra: 100,
     });
     return true;
     //if (mount - paid <= value) {
   } else {
     res.json({
-      title: "erro",
+      title: "error",
       data: `No se reconocio el comenado`,
       message: "error",
       extra: 100,
