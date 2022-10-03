@@ -342,7 +342,9 @@ app.post("/fixedDebst", (req, res) => {
     credentials.fixedDebst[found].timesWeek = newTime + 1
     if (data.mount >= total - oldValue) {
       var toPay =  total - oldValue   // 20  / 150 = 130
-      var payEver = - data.mount + toPay // -130 + 131
+                        //-25        //5    =  -20
+                        //25      - 5 = 20
+      var payEver = - data.mount - toPay // -130 + 131
      var sum2 = oldValue - total + data.mount; // 67 - 150 + 68
       credentials.restOfLastWeek[1].value = beforeCash + payEver;
       credentials.fixedDebst.splice(found, found + 1);
