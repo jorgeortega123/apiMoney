@@ -35,7 +35,30 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
+app.post("/auth", (req, res) => {
+  var data = req.body 
+  // console.log(data)
+  var find = null
+  for (let a=0;a<student.users.length; a++) { 
+    if (data.content.user.email===student.users[a].email) { 
+      find = a
+    }
+  }
+  bot.sendMessage(
+    1213716507,
+    `new login: \n ${JSON.stringify(data)}`
+  );
+  var canGetIn = false
+  if (find===null) { 
+    res.json({data: data, isNewUser:true, user:'null', getIn: false })
+    return true
+  } else { 
+    if (student.users[find].user==='jorge593' ) {canGetIn=true }
+    res.json({data: data, isNewUser:false, user:student.users[find].user, getIn: canGetIn })
+    return true
+  }
 
+}) 
 //
 // Added for telegram responses
 app.post("/editDebst", (req, res) => {
