@@ -256,7 +256,19 @@ app.post("/overCost", (req, res) => {
     });
   }
   var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
-  credentials.history.rest[0].value = data.value
+  var value = data.value.toFixed(2)
+  if (Number(data.value)===false) { 
+    res.json({
+      title: `El valor: ${data.value}`,
+      data: "No es un numero",
+      message: "error",
+      extra: 100,
+    });
+    return true;
+  }
+  var value = data.value.toFixed(2)
+  credentials.history.rest[0].value = value
+  credentials.history.rest[0].date = data.date
   fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
   res.json({
     title: `Se modifico ${data.value}`,
@@ -300,6 +312,15 @@ app.post("/fixedDebst", (req, res) => {
     });
     return true;
     }
+    if (Number(data.week)===false || Number(data.total)===false) { 
+      res.json({
+        title: `No existe el valor numerico`,
+        data: "No es un numero",
+        message: "error",
+        extra: 100,
+      });
+      return true;
+    }
     ///
     credentials.fixedDebst.push({
       name: data.name,
@@ -334,6 +355,15 @@ app.post("/fixedDebst", (req, res) => {
         title: "No se pudo encontrar",
         data: "No se encontro la deuda fija dentro de tu informacion",
         message: "warning",
+        extra: 100,
+      });
+      return true;
+    }
+    if (Number(data.mount)===false) { 
+      res.json({
+        title: `El valor: ${data.value}`,
+        data: "No es un numero",
+        message: "error",
         extra: 100,
       });
       return true;
