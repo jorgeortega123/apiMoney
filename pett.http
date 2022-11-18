@@ -2,10 +2,99 @@
 post https://mymone.azurewebsites.net/download
 Content-Type: application/json
 
+###
+
+post https://transformar.senescyt.gob.ec/#/Account
+Content-Type: application/json
+
+{
+    "opcionesDTO": null,
+    "usuarioDTO": {
+        "identificacion": "2100656665",
+        "email": "",
+        "apellidos": "",
+        "name": "",
+        "fechaNacimiento": "",
+        "genero": "",
+        "estadoCivil": "",
+        "telefono": "",
+        "celular": "",
+        "token": "",
+        "session": 0,
+        "password": "MAXpower12",
+        "nombreSegmento": "",
+        "id": 0,
+        "idInscripcionIES": 0,
+        "mensaje": null,
+        "postulacionMensaje": true,
+        "estadoCalificacion": 0,
+        "cupoActivo": true,
+        "params": null,
+        "tipoDocumento": null,
+        "rutaCambioClave": "",
+        "verificaPasaporte": false,
+        "estadoCambioDocumento": null,
+        "mensajeCambioIdent": null,
+        "cambioDocTyC": false,
+        "accionesAfirmativasTyC": false,
+        "condicionadoBachiller": false
+    },
+    "iesDTO": {
+        "id": null,
+        "nombre": "",
+        "codigosistema": "IESGRL",
+        "financiamiento": "",
+        "tipoIes": "",
+        "categoria": "",
+        "porcentaje": 0,
+        "tieneEvaluacion": 0,
+        "mensajeBeca": "",
+        "mensajeInicioDeClase": "",
+        "estadoEvaluacion": true,
+        "totalCarreras": 0,
+        "totalCarrerasDisponibles": 0,
+        "estadoConvocatoria": true
+    },
+    "navegador": "Chrome",
+    "aceptacion": "",
+    "nombrePeriodo": "",
+    "bloqueo": "",
+    "encuesta": null,
+    "grupo": 0,
+    "fechaMinima": "",
+    "mensaje": "",
+    "pinDTO": null,
+    "constantesDTO": null,
+    "esEscolarDTO": null,
+    "parroquia": null,
+    "fechaFinProceso": null
+}
+###
 
 { 
       "user": "jorge593"
 }
+###
+GET https://181.113.227.222
+
+
+###
+
+GET https://srienlinea.sri.gob.ec/movil-servicios/api/v1.0/deudas/porIdentificacion/2100656665
+
+
+###
+
+
+post http://consultas.funcionjudicial.gob.ec/informacionjudicialindividual/api/defensorPenal/buscarPorNombreCedula/2100656665/1/10/cedula
+
+
+{"parametro":2100656665,"paginaIncial":1,"paginaFinal":10,"origen":"cedula"}
+###
+
+post https://www.senescyt.gob.ec/consulta-titulos-web/faces/vista/consulta/consulta.xhtml
+
+
 ###
 
 post {{api}}/fixedDebst
