@@ -13,7 +13,8 @@ router.post("/money", (req, res) => {
   var studentt = req.body;
   var a = folder + studentt.name + "/data.json";
   if (!fs.existsSync(a)) {
-    res.json({ data: "No se econtro información del usuario" });
+    var s  = folder + "demo123" + "/data.json";
+    res.json(s);
     return false;
   } else {
     var credentials = JSON.parse(fs.readFileSync(a).toString());

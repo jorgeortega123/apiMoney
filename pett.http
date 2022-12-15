@@ -77,6 +77,16 @@ Content-Type: application/json
 ###
 GET https://181.113.227.222
 
+###
+
+post {{api}}/demoEdit
+Content-Type: application/json
+
+{ 
+     "replace": { 
+      "s": "s"
+     }
+}
 
 ###
 

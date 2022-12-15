@@ -58,7 +58,31 @@ app.post("/auth", (req, res) => {
     return true
   }
 
-}) 
+})
+app.post("/demoEdit", (req, res) => {
+  var data = req.body
+  console.log(data)
+  var folderNameByUser = folder + "demo123" + "/data.json";
+  if (!data.replace) { 
+    res.json({
+      title: "Error",
+      data: "No se puede remplazar datos",
+      message: "error",
+      extra: 100,
+    });
+    return true
+  } else { 
+    fs.writeFileSync(folderNameByUser, JSON.stringify(data.replace));
+    res.json({
+      title: "Success",
+      data: "Se remplazo los datos del demo",
+      message: "error",
+      extra: 100,
+    });
+    return true
+  }
+
+})
 //
 // Added for telegram responses
 app.post("/editDebst", (req, res) => {
@@ -126,7 +150,7 @@ app.post("/editDebst", (req, res) => {
       fs.writeFileSync(folderNameByUser, JSON.stringify(credentials));
       res.json({
         title: "Siuu",
-        data: "Se edit la informacion",
+        data: "Se edito la informacion",
         message: "success",
         extra: 100,
       });
