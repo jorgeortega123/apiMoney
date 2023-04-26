@@ -89,18 +89,6 @@
         }
     ],
     "fixed": [
-        {
-            "name": "invest",
-            "value": 11
-        },
-        {
-            "name": "laptop",
-            "value": 60
-        },
-        {
-            "name": "ortodoncia",
-            "value": 30
-        }
     ],
     "fixedDebst": [],
     "debts": [

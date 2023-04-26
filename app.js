@@ -470,15 +470,7 @@ app.post("/newContabilitie", (req, res) => {
   }
   //
   var credentials = JSON.parse(fs.readFileSync(folderNameByUser).toString());
-  if (credentials.isValueSunday === true) {
-    res.json({
-      title: "Uncoreset",
-      data: "Ya se realizo el domingo",
-      message: "warning",
-      extra: 100,
-    });
-    return true;
-  }
+ 
   var fixedCost = credentials.cost[0].fixed;
   var variablesCost = credentials.cost[0].variables;
   //console.log(nameEdit);

@@ -164,10 +164,10 @@ Content-Type: application/json
 
 
 { 
-     "name": "ortodoncia",
+     "name": "invest",
      "value": 30,
       "user": "jorge593", 
-      "action": "edit"
+      "action": "del"
 }
 
 ###
@@ -200,7 +200,6 @@ Content-Type: application/json
 ###
 
 post https://mymone.azurewebsites.net/newContabilitie
-
 Content-Type: application/json
 
 
@@ -282,10 +281,9 @@ Content-Type: application/json
 
 
 { 
-     
-       "phone": "+593959434867",
-    "message": "ola",
-    "key": "c40aecb8bc1497d84c1c1c28071cd860adeb22c2mo8U8P7eDS33otmOGpQg1FR0e"
+       "phone": "593959859877",
+    "message": "PAPU DESPIERTA ESTOY PROBANDO TEXTbelt.com",
+    "key": "66ecd565d79b018e879a5bc6d7b506904ab34d4ekhHWeVzQzQbrhEd3OtLvTMeIe"
      
      
     

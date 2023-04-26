@@ -3,10 +3,10 @@
     "name": "Jorge",
     "secondName": "Ortega",
     "actualDay": "Mon",
-    "isValueSunday": true,
-    "perWeek": 45,
+    "isValueSunday": false,
+    "perWeek": 50,
     "chatIdTelegram": 1213716507,
-    "perMonth": 180,
+    "perMonth": 200,
     "cost": [
         {
             "fixed": [
@@ -21,7 +21,7 @@
                 {
                     "title": "cooperativa",
                     "color": "#D7FF00",
-                    "value": 0.11,
+                    "value": 1.31,
                     "cost": 2.75,
                     "max": 2.75,
                     "monthly": 11
@@ -58,7 +58,7 @@
                 {
                     "title": "ahorro",
                     "color": "#FF0000",
-                    "value": 0,
+                    "value": 2,
                     "cost": 3,
                     "max": 4
                 }
@@ -67,7 +67,7 @@
                 {
                     "title": "social",
                     "color": "#FF45F9",
-                    "value": 5.71,
+                    "value": 13.51,
                     "cost": 3,
                     "max": 6
                 },
@@ -81,40 +81,22 @@
                 {
                     "title": "imprevisto",
                     "color": "#007ED6",
-                    "value": 35.5,
+                    "value": 137.35,
                     "cost": 4,
                     "max": 8
                 }
             ]
         }
     ],
-    "fixed": [
-        {
-            "name": "invest",
-            "value": 11
-        },
-        {
-            "name": "laptop",
-            "value": 60
-        },
-        {
-            "name": "ortodoncia",
-            "value": 20
-        }
+    "fixed": [],
+    "fixedDebst": [
     ],
-    "fixedDebst": [],
     "debts": [
         {
             "name": "luis",
             "relationship": "hermano",
             "mount": 149.01000000000002,
-            "paid": 19.41
-        },
-        {
-            "name": "johanna",
-            "relationship": "mama",
-            "mount": 159,
-            "paid": 57.150000000000006
+            "paid": 60.96
         }
     ],
     "historyDebst": [
@@ -328,6 +310,39 @@
             "afterWorth": 66.99,
             "type": "de",
             "text": ""
+        },
+        {
+            "name": "luis",
+            "incoming": 11,
+            "beforeDebst": 19.41,
+            "afterDebst": 30.41,
+            "beforeWorth": 39.929999999999986,
+            "afterWorth": 28.929999999999986,
+            "type": "in",
+            "text": "",
+            "date": "2023-02-12T00:46:43.130Z"
+        },
+        {
+            "name": "luis",
+            "incoming": 0.55,
+            "beforeDebst": 30.41,
+            "afterDebst": 30.96,
+            "beforeWorth": 28.929999999999986,
+            "afterWorth": 28.379999999999985,
+            "type": "in",
+            "text": "",
+            "date": "2023-02-12T00:46:51.499Z"
+        },
+        {
+            "name": "luis",
+            "incoming": 30,
+            "beforeDebst": 30.96,
+            "afterDebst": 60.96,
+            "beforeWorth": 82.2,
+            "afterWorth": 52.2,
+            "type": "in",
+            "text": "",
+            "date": "2023-03-01T01:38:18.548Z"
         }
     ],
     "dinnerMove": [
@@ -449,6 +464,38 @@
             "before": 10.45,
             "after": 11.35,
             "date": "2022-09-30T17:57:56.850Z"
+        },
+        {
+            "name": "cooperativa",
+            "valor": 1.2,
+            "type": "fixed",
+            "before": 0.11,
+            "after": 1.31,
+            "date": "2022-12-21T16:10:13.625Z"
+        },
+        {
+            "name": "imprevisto",
+            "valor": 101.85,
+            "type": "variables",
+            "before": 35.5,
+            "after": 137.35,
+            "date": "2023-02-12T03:52:41.107Z"
+        },
+        {
+            "name": "social",
+            "valor": 7.8,
+            "type": "variables",
+            "before": 5.71,
+            "after": 13.51,
+            "date": "2023-02-12T23:42:20.376Z"
+        },
+        {
+            "name": "ahorro",
+            "valor": 2,
+            "type": "fixed",
+            "before": 0,
+            "after": 2,
+            "date": "2023-04-22T03:13:51.144Z"
         }
     ],
     "totalBill": 0,
@@ -459,7 +506,7 @@
         },
         {
             "title": "patrimonio",
-            "value": 41.12999999999999
+            "value": 50.2
         }
     ],
     "savings": [
@@ -581,6 +628,34 @@
                 "costName": "comida",
                 "before": 67.89,
                 "after": 66.99
+            },
+            {
+                "date": "2022-12-21T16:10:13.625Z",
+                "value": 1.2,
+                "costName": "cooperativa",
+                "before": 41.12999999999999,
+                "after": 39.929999999999986
+            },
+            {
+                "date": "2023-02-12T03:52:41.107Z",
+                "value": 101.85,
+                "costName": "imprevisto",
+                "before": 146.85,
+                "after": 45
+            },
+            {
+                "date": "2023-02-12T23:42:20.375Z",
+                "value": 7.8,
+                "costName": "social",
+                "before": 90,
+                "after": 82.2
+            },
+            {
+                "date": "2023-04-22T03:13:51.144Z",
+                "value": 2,
+                "costName": "ahorro",
+                "before": 52.2,
+                "after": 50.2
             }
         ],
         "rest": [
